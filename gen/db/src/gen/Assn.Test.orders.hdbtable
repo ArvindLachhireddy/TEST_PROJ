@@ -1,0 +1,7 @@
+COLUMN TABLE Assn_Test_orders (
+  Order_ID NVARCHAR(36) NOT NULL,
+  Order_Date DATE,
+  PRIMARY KEY(Order_ID)
+) WITH ASSOCIATIONS (
+  MANY TO MANY JOIN Assn_Test_OrderItems AS items ON (items.order_Order_ID = Order_ID)
+)

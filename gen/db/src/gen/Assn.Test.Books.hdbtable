@@ -1,0 +1,14 @@
+COLUMN TABLE Assn_Test_Books (
+  Book_ID NVARCHAR(36) NOT NULL,
+  title NVARCHAR(60),
+  genre NVARCHAR(60),
+  publCountry NVARCHAR(60),
+  stock INTEGER,
+  price_amount DECIMAL(15, 8),
+  price_currency NVARCHAR(6),
+  isHardcover NVARCHAR(6),
+  author_Author_ID NVARCHAR(36),
+  PRIMARY KEY(Book_ID)
+) WITH ASSOCIATIONS (
+  MANY TO ONE JOIN Assn_Test_Authors AS author ON (author.Author_ID = author_Author_ID)
+)

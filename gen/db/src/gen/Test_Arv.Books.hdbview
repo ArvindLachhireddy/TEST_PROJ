@@ -1,0 +1,14 @@
+VIEW Test_Arv_Books AS SELECT
+  Books_0.Book_ID,
+  Books_0.title,
+  Books_0.genre,
+  Books_0.publCountry,
+  Books_0.stock,
+  Books_0.price_amount,
+  Books_0.price_currency,
+  Books_0.isHardcover,
+  Books_0.author_Author_ID
+FROM Assn_Test_Books AS Books_0
+WITH ASSOCIATIONS (
+  MANY TO ONE JOIN Test_Arv_Authors AS author ON (author.Author_ID = author_Author_ID)
+)

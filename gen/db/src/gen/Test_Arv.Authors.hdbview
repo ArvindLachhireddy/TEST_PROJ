@@ -1,0 +1,9 @@
+VIEW Test_Arv_Authors AS SELECT
+  Authors_0.Author_ID,
+  Authors_0.Author_name,
+  Authors_0.dateOfBirth,
+  Authors_0.dateOfDeath
+FROM Assn_Test_Authors AS Authors_0
+WITH ASSOCIATIONS (
+  MANY TO MANY JOIN Test_Arv_Books AS Books_Ascn ON (Books_Ascn.author_Author_ID = Author_ID)
+)

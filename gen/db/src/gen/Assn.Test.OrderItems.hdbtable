@@ -1,0 +1,8 @@
+COLUMN TABLE Assn_Test_OrderItems (
+  POS INTEGER NOT NULL,
+  Order_Category NVARCHAR(20),
+  order_Order_ID NVARCHAR(36) NOT NULL,
+  PRIMARY KEY(POS, order_Order_ID)
+) WITH ASSOCIATIONS (
+  MANY TO ONE JOIN Assn_Test_orders AS "ORDER" ON ("ORDER".Order_ID = order_Order_ID)
+)

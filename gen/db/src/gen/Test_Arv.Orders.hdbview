@@ -1,0 +1,7 @@
+VIEW Test_Arv_Orders AS SELECT
+  orders_0.Order_ID,
+  orders_0.Order_Date
+FROM Assn_Test_orders AS orders_0
+WITH ASSOCIATIONS (
+  MANY TO MANY JOIN Test_Arv_Order_Items AS items ON (items.order_Order_ID = Order_ID)
+)

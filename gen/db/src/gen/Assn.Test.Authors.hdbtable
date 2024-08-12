@@ -1,0 +1,9 @@
+COLUMN TABLE Assn_Test_Authors (
+  Author_ID NVARCHAR(36) NOT NULL,
+  Author_name NVARCHAR(30),
+  dateOfBirth DATE,
+  dateOfDeath DATE,
+  PRIMARY KEY(Author_ID)
+) WITH ASSOCIATIONS (
+  MANY TO MANY JOIN Assn_Test_Books AS Books_Ascn ON (Books_Ascn.author_Author_ID = Author_ID)
+)
