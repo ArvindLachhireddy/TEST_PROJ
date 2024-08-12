@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:Variable="http://www.sap.com/ndb/BiModelVariable.ecore" id="TablefunctionInputparameterCalview" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" hierarchyGeneration="SQL" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="TablefunctionInputparameterCalview.hdbcalculationview"/>
+<localVariables>
+  <variable id="INPUTANIMECODE" parameter="true">
+    <descriptions defaultDescription=" "/>
+    <variableProperties datatype="NVARCHAR" length="10" mandatory="true">
+      <valueDomain type="empty"/>
+      <selection multiLine="true" type="SingleValue"/>
+    </variableProperties>
+  </variable>
+</localVariables>
+<variableMappings>
+  <mapping xsi:type="Variable:VariableMapping" dataSource="Animecode">
+    <targetVariable name="INPUTANIMECODE" resourceUri="Animecode"/>
+    <localVariable>INPUTANIMECODE</localVariable>
+  </mapping>
+</variableMappings>
+<dataSources>
+  <DataSource id="Animecode" type="TABLE_FUNCTION">
+    <resourceUri>Animecode</resourceUri>
+  </DataSource>
+</dataSources>
+<snapshotProcedures/>
+<calculationViews/>
+<logicalModel id="Animecode" filterExpressionLanguage="SQL">
+  <attributes>
+    <attribute id="RELEASEDMONTH" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="RELEASEDMONTH"/>
+      <keyMapping columnObjectName="Animecode" columnName="RELEASEDMONTH"/>
+    </attribute>
+    <attribute id="ANIMECODE" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ANIMECODE"/>
+      <keyMapping columnObjectName="Animecode" columnName="ANIMECODE"/>
+    </attribute>
+    <attribute id="RELEASEDDATE" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="RELEASEDDATE"/>
+      <keyMapping columnObjectName="Animecode" columnName="RELEASEDDATE"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="RELEASEDYEAR" order="1" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="RELEASEDYEAR"/>
+      <measureMapping columnObjectName="Animecode" columnName="RELEASEDYEAR"/>
+    
+      <exceptionAggregationMetadata/>
+    </measure>
+    <measure id="RATING" order="4" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="RATING"/>
+      <measureMapping columnObjectName="Animecode" columnName="RATING"/>
+    
+      <exceptionAggregationMetadata/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+
+  <filter>&quot;ANIMECODE&quot; IN ($$INPUTANIMECODE$$)</filter>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

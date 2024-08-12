@@ -1,0 +1,21 @@
+PROCEDURE "chooseOneCV"( chooseCV NVARCHAR(100))
+LANGUAGE SQLSCRIPT
+SQL SECURITY INVOKER
+AS
+BEGIN
+
+    DECLARE VAR_SQL NVARCHAR(60);
+
+   
+        --VAR_SQL = "' || chooseCV ||'";
+      --EXECUTE IMMEDIATE :VAR_SQL;
+   
+    EXECUTE IMMEDIATE 'SELECT * from "'|| :chooseCV ||'";';
+    /*elseif (chooseCV = 'AnimeParentChild') 
+    THEN
+        'SELECT * from "|| chooseCV ||"';
+    else
+        SELECT 'enter a value from AnimeLevelHierarchy or AnimeParentChild ' from "SYS::DUMMY";
+    end if;*/
+   
+END;

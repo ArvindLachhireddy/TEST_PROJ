@@ -1,0 +1,9 @@
+PROCEDURE "nested_procedure"()
+LANGUAGE SQLSCRIPT
+SQL SECURITY INVOKER
+AS
+BEGIN
+    CALL "Test"();
+
+    SELECT * FROM "";
+ENDEmployees_Backup

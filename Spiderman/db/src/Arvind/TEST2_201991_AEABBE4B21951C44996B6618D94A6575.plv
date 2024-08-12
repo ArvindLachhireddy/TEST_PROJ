@@ -1,0 +1,1102 @@
+<?Version 33?>
+<Plan ID="ID_201991_AEABBE4B21951C44996B6618D94A6575_0" xmlns="http://www.sap.com/ndb/planviz" Type="Executed" PlanType="QoExec">
+<SQL><![CDATA[SELECT TOP 1000
+	"ANIMECODE",
+	"ANIMESEASONNAME",
+	"ANIMESEASONCODE",
+	"SEASONNAME",
+	SUM("NUMBEROFEPISODES") AS "NUMBEROFEPISODES"
+FROM "SPIDERMAN_1"."Trail"
+GROUP BY "ANIMECODE", "ANIMESEASONNAME", "ANIMESEASONCODE", "SEASONNAME"]]></SQL>
+<SystemVersion><![CDATA[{"Version":"4.00.000.00.1718101422","CompileType":"rel","USER_NAME":"Capturing USER_NAME is disabled","SCHEMA_NAME":"SPIDERMAN_1"}]]></SystemVersion>
+<RecompileState><![CDATA[INITIAL_STATE]]></RecompileState>
+<SessionVariables><![CDATA[{"ABAPVARCHARMODE":"FALSE","APPLICATION":"SAP_HANARuntimeTools_HRA","APPLICATIONUSER":"Capturing APPLICATIONUSER is disabled","APPLICATIONVERSION":"4.0.240620-1719533146-8146bc9","DRIVERVERSION":"2.21.21","OS_USER":"Capturing OS_USER is disabled","PROTOCOL_VERSION":"4.1 (6, 8)","SPATIAL_OUTPUT_REPRESENTATION":"EWKB","VIRTUAL_TABLE_REPLICA":"TRUE"}]]></SessionVariables>
+<ProjectedColsWithDatatype><![CDATA[ANIMECODE(NVARCHAR(10)), ANIMESEASONNAME(NVARCHAR(25)), ANIMESEASONCODE(NVARCHAR(10)), SEASONNAME(NVARCHAR(30)), NUMBEROFEPISODES(INT)]]></ProjectedColsWithDatatype>
+<CompileTime>
+	<Start Unit="us">1720515968763301</Start>
+	<End Unit="us">1720515968763342</End>
+</CompileTime>
+<StmtStats><![CDATA[]]></StmtStats>
+<StmtMemStats><![CDATA[[{"Allocated Count":2929,"Allocated Size":3251688,"Allocator Name":"Connection/201991/Statement/867544739134610","Count in Use":2926,"Deallocated Count":1862,"Deallocated Size":3003256,"Depth":3,"Max Allocation Size (estimate)":1048576,"Max Single Allocation Size":1048576,"Size in Use":248160},{"Allocated Count":5,"Allocated Size":3320,"Allocator Name":"Connection/201991/Statement/867544739134610/Pool/RowEngine/QueryExecution/SearchAlloc","Count in Use":5,"Deallocated Count":0,"Deallocated Size":0,"Depth":4,"Max Allocation Size (estimate)":3320,"Max Single Allocation Size":1560,"Size in Use":3320},{"Allocated Count":2951,"Allocated Size":3251608,"Allocator Name":"Connection/201991/Statement/867544739134610/IMPLICIT","Count in Use":2948,"Deallocated Count":1863,"Deallocated Size":3003296,"Depth":4,"Max Allocation Size (estimate)":1048576,"Max Single Allocation Size":1048576,"Size in Use":248040}]]]></StmtMemStats>
+<CompileSummary><![CDATA[{}]]></CompileSummary>
+	<RootRelation ID="ID_201991_AEABBE4B21951C44996B6618D94A6575_0" TypeName="PROJECT" Status="Finished">
+		<Name>HEX Search</Name>
+		<ExecutionTime>
+			<Exclusive Unit="us">0</Exclusive>
+			<Inclusive Unit="us">2091</Inclusive>
+		</ExecutionTime>
+		<MemoryUsage>
+			<Max>0</Max>
+		</MemoryUsage>
+		<Child ID="ID_201991_AEABBE4B21951C44996B6618D94A6575_1" >
+			<ExecutedOutputCardinality>9</ExecutedOutputCardinality>
+			<FetchCallCount>1</FetchCallCount>
+		</Child>
+	</RootRelation>
+	<Relation ID="ID_201991_AEABBE4B21951C44996B6618D94A6575_1" TypeName="HEX_SEARCH" InternalBufferId="0" Status="Finished">
+		<Name>HEX Search</Name>
+		<ExecutionType>HEX</ExecutionType>
+		<Summary><![CDATA[ANIMESEASONS.ANIMECODE, ANIMESEASONS.ANIMESEASONNAME, ANIMESEASONS.ANIMESEASONCODE, ANIMESEASONDETAILS.SEASONNAME, NUMBEROFEPISODES]]></Summary>
+		<Location>7ec91fa5-1d31-44c5-8261-3e14647ea6b2:30040</Location>
+		<EstimatedCost>
+			<Inclusive Unit="us">7.01879</Inclusive>
+		</EstimatedCost>
+		<EstimatedOutputCardinality>8.54999</EstimatedOutputCardinality>
+		<ExecutionTime>
+			<Start Unit="us">1720515968766672</Start>
+			<End Unit="us">1720515968768763</End>
+			<Exclusive Unit="us">1986</Exclusive>
+			<Inclusive Unit="us">2091</Inclusive>
+			<Timestamps>[{"Open": [{"start":1720515968766672,"end":1720515968766702,"thread":2348},{"start":1720515968766711,"end":1720515968768132,"thread":2348}]},{"Fetch": [{"start":1720515968768206,"end":1720515968768730,"thread":2348}]},{"Close": [{"start":1720515968768752,"end":1720515968768763,"thread":2348}]}]</Timestamps>
+		</ExecutionTime>
+		<MemoryUsage>
+			<Max>0</Max>
+		</MemoryUsage>
+		<KernelCPUTime Unit="ms">0.000</KernelCPUTime>
+		<UserCPUTime Unit="ms">2.233</UserCPUTime>
+		<Details><![CDATA[{"Projected Cols":"ANIMESEASONS.ANIMECODE, ANIMESEASONS.ANIMESEASONNAME, ANIMESEASONS.ANIMESEASONCODE, ANIMESEASONDETAILS.SEASONNAME, NUMBEROFEPISODES","Non-compiled CPU overhead":"1.171 ms"}]]></Details>
+		<InnerPlans>
+			<Plan ID="ID_201991_AEABBE4B21951C44996B6618D94A6575_1_0" Type="Estimated" PlanType="Logical">
+				<RootRelation ID="ID_201991_AEABBE4B21951C44996B6618D94A6575_1_0" TypeName="PROJECT">
+					<Name>PROJECT</Name>
+					<Summary><![CDATA[ANIMESEASONS.ANIMECODE, ANIMESEASONS.ANIMESEASONNAME, ANIMESEASONS.ANIMESEASONCODE, ANIMESEASONDETAILS.SEASONNAME, NUMBEROFEPISODES]]></Summary>
+					<Property><![CDATA[PHYSICAL_ENUM_BY: HEX_PROJECT]]></Property>
+					<Location>7ec91fa5-1d31-44c5-8261-3e14647ea6b2:30040</Location>
+					<EstimatedCost>
+						<Exclusive Unit="us">-1000000</Exclusive>
+						<Inclusive Unit="us">7.01879</Inclusive>
+					</EstimatedCost>
+					<EstimatedOutputCardinality>8.54999</EstimatedOutputCardinality>
+					<Details><![CDATA[{"Projected Cols":"ANIMESEASONS.ANIMECODE, ANIMESEASONS.ANIMESEASONNAME, ANIMESEASONS.ANIMESEASONCODE, ANIMESEASONDETAILS.SEASONNAME, NUMBEROFEPISODES"}]]></Details>
+					<Child ID="ID_201991_AEABBE4B21951C44996B6618D94A6575_1_1">
+					</Child>
+				</RootRelation>
+				<Relation ID="ID_201991_AEABBE4B21951C44996B6618D94A6575_1_1" TypeName="TOP">
+					<Name>LIMIT</Name>
+					<Summary><![CDATA[NUM RECORDS: 1000]]></Summary>
+					<Property><![CDATA[PHYSICAL_ENUM_BY: HEX_LIMIT]]></Property>
+					<Location>7ec91fa5-1d31-44c5-8261-3e14647ea6b2:30040</Location>
+					<EstimatedCost>
+						<Exclusive Unit="us">-1000000</Exclusive>
+						<Inclusive Unit="us">7.01879</Inclusive>
+					</EstimatedCost>
+					<EstimatedOutputCardinality>8.54999</EstimatedOutputCardinality>
+					<Details><![CDATA[{"Num Records":"1000"}]]></Details>
+					<Child ID="ID_201991_AEABBE4B21951C44996B6618D94A6575_1_2">
+					</Child>
+				</Relation>
+				<Relation ID="ID_201991_AEABBE4B21951C44996B6618D94A6575_1_2" TypeName="GROUP_BY">
+					<Name>AGGREGATION</Name>
+					<Summary><![CDATA[GROUPING: ANIMESEASONS.ANIMECODE, ANIMESEASONS.ANIMESEASONNAME, ANIMESEASONS.ANIMESEASONCODE, AGGREGATION: SUM(SUM(ANIMESEASONDETAILS.NUMBEROFEPISODES))]]></Summary>
+					<Property><![CDATA[VID GROUPING, VECTOR PROCESSING, ENUM_BY: PREAGGR_BEFORE_JOIN, PHYSICAL_ENUM_BY: HEX_GROUP_BY]]></Property>
+					<Location>7ec91fa5-1d31-44c5-8261-3e14647ea6b2:30040</Location>
+					<EstimatedCost>
+						<Exclusive Unit="us">-1000000</Exclusive>
+						<Inclusive Unit="us">7.01879</Inclusive>
+					</EstimatedCost>
+					<EstimatedOutputCardinality>8.54999</EstimatedOutputCardinality>
+					<Details><![CDATA[{"Grouping Cols":"ANIMESEASONS.ANIMECODE, ANIMESEASONS.ANIMESEASONNAME, ANIMESEASONS.ANIMESEASONCODE, ","Aggregation Cols":"SUM(SUM(ANIMESEASONDETAILS.NUMBEROFEPISODES))"}]]></Details>
+					<Child ID="ID_201991_AEABBE4B21951C44996B6618D94A6575_1_3">
+					</Child>
+				</Relation>
+				<Relation ID="ID_201991_AEABBE4B21951C44996B6618D94A6575_1_3" TypeName="JOIN">
+					<Name>HASH JOIN (LEFT OUTER)</Name>
+					<Summary><![CDATA[HASH CONDITION: ANIMESEASONS.ANIMECODE = ANIMESEASONDETAILS.ANIMECODE, HASH SIZE: 3, RIGHT SIDE HASH]]></Summary>
+					<Property><![CDATA[ENUM_BY: PREAGGR_BEFORE_JOIN, PHYSICAL_ENUM_BY: HEX_HASH_JOIN]]></Property>
+					<Location>7ec91fa5-1d31-44c5-8261-3e14647ea6b2:30040</Location>
+					<EstimatedCost>
+						<Exclusive Unit="us">-1000000</Exclusive>
+						<Inclusive Unit="us">4.15291</Inclusive>
+					</EstimatedCost>
+					<EstimatedOutputCardinality>9</EstimatedOutputCardinality>
+					<Details><![CDATA[{"Hash Condition":"ANIMESEASONS.ANIMECODE = ANIMESEASONDETAILS.ANIMECODE, HASH SIZE: 3, RIGHT SIDE HASH"}]]></Details>
+					<Child ID="ID_201991_AEABBE4B21951C44996B6618D94A6575_1_4">
+					</Child>
+					<Child ID="ID_201991_AEABBE4B21951C44996B6618D94A6575_1_5">
+					</Child>
+				</Relation>
+				<Relation ID="ID_201991_AEABBE4B21951C44996B6618D94A6575_1_5" TypeName="GROUP_BY">
+					<Name>AGGREGATION</Name>
+					<Summary><![CDATA[GROUPING: ANIMESEASONDETAILS.ANIMECODE, AGGREGATION: SUM(ANIMESEASONDETAILS.NUMBEROFEPISODES)]]></Summary>
+					<Property><![CDATA[VID GROUPING, VECTOR PROCESSING, ENUM_BY: PREAGGR_BEFORE_JOIN, PHYSICAL_ENUM_BY: HEX_GROUP_BY]]></Property>
+					<Location>7ec91fa5-1d31-44c5-8261-3e14647ea6b2:30040</Location>
+					<EstimatedCost>
+						<Exclusive Unit="us">-1000000</Exclusive>
+						<Inclusive Unit="us">1.14251</Inclusive>
+					</EstimatedCost>
+					<EstimatedOutputCardinality>3</EstimatedOutputCardinality>
+					<Details><![CDATA[{"Grouping Cols":"ANIMESEASONDETAILS.ANIMECODE, ","Aggregation Cols":"SUM(ANIMESEASONDETAILS.NUMBEROFEPISODES)"}]]></Details>
+					<Child ID="ID_201991_AEABBE4B21951C44996B6618D94A6575_1_6">
+					</Child>
+				</Relation>
+				<Relation ID="ID_201991_AEABBE4B21951C44996B6618D94A6575_1_6" TypeName="TABLE">
+					<Name>TABLE SCAN</Name>
+					<Schema><![CDATA[SPIDERMAN_1]]></Schema>
+					<TableType><![CDATA[COLUMN TABLE]]></TableType>
+					<ObjectName><![CDATA[ANIMESEASONDETAILS]]></ObjectName>
+					<Property><![CDATA[PHYSICAL_ENUM_BY: HEX_TABLE_SCAN]]></Property>
+					<Location>7ec91fa5-1d31-44c5-8261-3e14647ea6b2:30040</Location>
+					<EstimatedCost>
+						<Exclusive Unit="us">-1000000</Exclusive>
+						<Inclusive Unit="us">0.075</Inclusive>
+					</EstimatedCost>
+					<EstimatedOutputCardinality>25</EstimatedOutputCardinality>
+				</Relation>
+				<Relation ID="ID_201991_AEABBE4B21951C44996B6618D94A6575_1_4" TypeName="TABLE">
+					<Name>TABLE SCAN</Name>
+					<Schema><![CDATA[SPIDERMAN_1]]></Schema>
+					<TableType><![CDATA[COLUMN TABLE]]></TableType>
+					<ObjectName><![CDATA[ANIMESEASONS]]></ObjectName>
+					<Property><![CDATA[PHYSICAL_ENUM_BY: HEX_TABLE_SCAN]]></Property>
+					<Location>7ec91fa5-1d31-44c5-8261-3e14647ea6b2:30040</Location>
+					<EstimatedCost>
+						<Exclusive Unit="us">-1000000</Exclusive>
+						<Inclusive Unit="us">0.027</Inclusive>
+					</EstimatedCost>
+					<EstimatedOutputCardinality>9</EstimatedOutputCardinality>
+				</Relation>
+			</Plan>
+			<Plan ID="66_group23" Type="Executed" PlanType="Column">
+				<RootRelation ID="66_group23_node" Status="Finished" Physical="True" TypeName="HEX">
+					<Name><![CDATA[PROJECT]]></Name>
+					<Summary><![CDATA[ANIMESEASONS.ANIMECODE, ANIMESEASONS.ANIMESEASONNAME, ANIMESEASONS.ANIMESEASONCODE, ANIMESEASONDETAILS.SEASONNAME, NUMBEROFEPISODES]]></Summary>
+					<ExecutionTime>
+						<Timestamps>[{"Pop":[{"start":1720515968768121,"end":1720515968768726}]}]</Timestamps>
+					</ExecutionTime>
+					<UserCPUTime Unit="ms">0.020</UserCPUTime>
+					<Details><![CDATA[{"max numUsedLocalContexts":"1","Estimated Output Cardinality":"9","Memory Allocated":"0.001 MB","Output Spec":"ANIMECODE NVARCHAR(10), ANIMESEASONNAME NVARCHAR(25), ANIMESEASONCODE NVARCHAR(10), SEASONNAME NVARCHAR(30), NUMBEROFEPISODES INT"}]]></Details>
+					<InnerPlans>
+						<Plan ID="67_op50" Type="Executed" PlanType="Column">
+							<RootRelation ID="67_op50_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+								<Name><![CDATA[ProjectFetchOp]]></Name>
+								<Summary><![CDATA[Fetch buffered result rows]]></Summary>
+								<Location><![CDATA[7ec91fa5-1d31-44c5-8261-3e14647ea6b2:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1720515968768724,"end":1720515968768726}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.002</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 17":"numUsedLocalContexts 1, CPUTime 0.002 ms, CPUWaitTime 0.000 ms, calls 1","operatorId":"71"}]]></Details>
+								<Child ID="68_op48_node">
+									<Details><![CDATA[{"ConnectionType":"Logical"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="68_op48" Type="Executed" PlanType="Column">
+							<RootRelation ID="68_op48_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+								<Name><![CDATA[ProjectBufferOp]]></Name>
+								<Summary><![CDATA[Buffer result rows if required]]></Summary>
+								<Location><![CDATA[7ec91fa5-1d31-44c5-8261-3e14647ea6b2:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1720515968768121,"end":1720515968768616}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.018</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 15":"numUsedLocalContexts 1, CPUTime 0.018 ms, CPUWaitTime 0.000 ms, calls 1","pipeline 16":"numUsedLocalContexts 0, CPUTime 0.000 ms, CPUWaitTime 0.000 ms, calls 0","Init CPUTime":"0.002 ms","Init CPUWaitTime":"0.000 ms","InitLocal CPUTime":"0.002 ms","InitLocal CPUWaitTime":"0.000 ms","Memory Allocated":"0.001 MB","operatorId":"70"}]]></Details>
+								<Child ID="69_op47_node">
+									<ExecutedOutputCardinality>9</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+					</InnerPlans>
+				</RootRelation>
+			</Plan>
+			<Plan ID="70_group24" Type="Executed" PlanType="Column">
+				<RootRelation ID="70_group24_node" Status="Finished" Physical="True" TypeName="HEX">
+					<Name><![CDATA[LIMIT]]></Name>
+					<Summary><![CDATA[NUM RECORDS: 1000]]></Summary>
+					<ExecutionTime>
+						<Timestamps>[{"Pop":[{"start":1720515968768104,"end":1720515968768618}]}]</Timestamps>
+					</ExecutionTime>
+					<UserCPUTime Unit="ms">0.325</UserCPUTime>
+					<Details><![CDATA[{"max numUsedLocalContexts":"1","Non-compiled CPU overhead":"0.313 ms","Estimated Output Cardinality":"9","Output Spec":"[DocId, ValueId, Value] ANIMECODE NVARCHAR(10), [DocId, ValueId, Value] ANIMESEASONNAME NVARCHAR(25), [DocId, ValueId, Value] ANIMESEASONCODE NVARCHAR(10), [DocId] SEASONNAME NVARCHAR(30), [Value] NUMBEROFEPISODES INT"}]]></Details>
+					<InnerPlans>
+						<Plan ID="71_op43" Type="Executed" PlanType="Column">
+							<RootRelation ID="71_op43_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+								<Name><![CDATA[LlangOutOperator]]></Name>
+								<Summary><![CDATA[<Materialize VectorGroupBy Results>; <Materialize>]]></Summary>
+								<Location><![CDATA[7ec91fa5-1d31-44c5-8261-3e14647ea6b2:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1720515968768104,"end":1720515968768623}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.161</UserCPUTime>
+								<EstimatedOutputCardinality>9</EstimatedOutputCardinality>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","Non-compiled CPU overhead":"0.241 ms","calls":"1","pipeline 15":"numUsedLocalContexts 1, CPUTime 0.161 ms, CPUWaitTime 0.000 ms, calls 1","InitLocal CPUTime":"0.002 ms","InitLocal CPUWaitTime":"0.000 ms","Estimated Output Cardinality":"9","FieldToHeader":"1000003","JIT cache hit":"no","JIT compile status":"Interpreting (finished 2 of 2 interpreted executions)","operatorId":"63"}]]></Details>
+								<Child ID="72_op42_node">
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="73_op44" Type="Executed" PlanType="Column">
+							<RootRelation ID="73_op44_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+								<Name><![CDATA[LimitOffsetOp]]></Name>
+								<Summary><![CDATA[Limit rows, start at offset]]></Summary>
+								<Location><![CDATA[7ec91fa5-1d31-44c5-8261-3e14647ea6b2:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1720515968768107,"end":1720515968768681}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.006</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 15":"numUsedLocalContexts 1, CPUTime 0.006 ms, CPUWaitTime 0.000 ms, calls 1","Init CPUTime":"0.001 ms","Init CPUWaitTime":"0.000 ms","Finish CPUTime":"0.001 ms","Finish CPUWaitTime":"0.000 ms","Limit: ":"1000","LimitOffset total incoming rows: ":"9","Offset: ":"0","operatorId":"64"}]]></Details>
+								<Child ID="71_op43_node">
+									<ExecutedOutputCardinality>9</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="74_op45" Type="Executed" PlanType="Column">
+							<RootRelation ID="74_op45_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+								<Name><![CDATA[ReparGatherer]]></Name>
+								<Summary><![CDATA[Gathers data in a buffer and might schedule tasks when the buffer gets full]]></Summary>
+								<Location><![CDATA[7ec91fa5-1d31-44c5-8261-3e14647ea6b2:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1720515968768110,"end":1720515968768620},{"start":1720515968768686,"end":1720515968768688}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.088</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"2","pipeline 15":"numUsedLocalContexts 1, CPUTime 0.086 ms, CPUWaitTime 0.000 ms, calls 1","pipeline 16":"numUsedLocalContexts 1, CPUTime 0.002 ms, CPUWaitTime 0.000 ms, calls 1","Init CPUTime":"0.002 ms","Init CPUWaitTime":"0.000 ms","InitLocal CPUTime":"0.002 ms","InitLocal CPUWaitTime":"0.000 ms","Estimated num rows buffered in parallel":"0","Framework Internal Data Size (B)":"0","Largest TaskSize used":"1","Memory Allocated":"0.000 MB","NumFunctors":"0","Sequential Processing":"1","operatorId":"65"}]]></Details>
+								<Child ID="73_op44_node">
+									<ExecutedOutputCardinality>9</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+								<Child ID="75_op49_node">
+									<ExecutedOutputCardinality>1</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="76_op46" Type="Executed" PlanType="Column">
+							<RootRelation ID="76_op46_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+								<Name><![CDATA[ReparProducer]]></Name>
+								<Summary><![CDATA[Produces output after a reparallelization point]]></Summary>
+								<Location><![CDATA[7ec91fa5-1d31-44c5-8261-3e14647ea6b2:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1720515968768540,"end":1720515968768619}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.003</UserCPUTime>
+								<EstimatedOutputCardinality>9</EstimatedOutputCardinality>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 15":"numUsedLocalContexts 1, CPUTime 0.003 ms, CPUWaitTime 0.000 ms, calls 1","pipeline 16":"numUsedLocalContexts 0, CPUTime 0.000 ms, CPUWaitTime 0.000 ms, calls 0","Estimated Output Cardinality":"9","TaskStats from op: 80":"count = 0, parentOpId: 4294967295","operatorId":"66"}]]></Details>
+								<Child ID="74_op45_node">
+									<ExecutedOutputCardinality>0</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="75_op49" Type="Executed" PlanType="Column">
+							<RootRelation ID="75_op49_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+								<Name><![CDATA[ReparFinisher]]></Name>
+								<Summary><![CDATA[Flush the remaining data in the buffers of ReparGatherer]]></Summary>
+								<Location><![CDATA[7ec91fa5-1d31-44c5-8261-3e14647ea6b2:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1720515968768684,"end":1720515968768689}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.003</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 16":"numUsedLocalContexts 1, CPUTime 0.003 ms, CPUWaitTime 0.000 ms, calls 1","operatorId":"67"}]]></Details>
+							</RootRelation>
+						</Plan>
+						<Plan ID="69_op47" Type="Executed" PlanType="Column">
+							<RootRelation ID="69_op47_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+								<Name><![CDATA[LlangInOutOperator]]></Name>
+								<Summary><![CDATA[<Materialize: ANIMESEASONS.ANIMESEASONNAME (NVARCHAR(25)), ANIMESEASONS.ANIMESEASONCODE (NVARCHAR(10))>]]></Summary>
+								<Location><![CDATA[7ec91fa5-1d31-44c5-8261-3e14647ea6b2:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1720515968768118,"end":1720515968768618}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.064</UserCPUTime>
+								<EstimatedOutputCardinality>9</EstimatedOutputCardinality>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","Non-compiled CPU overhead":"0.072 ms","calls":"1","pipeline 15":"numUsedLocalContexts 1, CPUTime 0.064 ms, CPUWaitTime 0.000 ms, calls 1","pipeline 16":"numUsedLocalContexts 0, CPUTime 0.000 ms, CPUWaitTime 0.000 ms, calls 0","InitLocal CPUTime":"0.002 ms","InitLocal CPUWaitTime":"0.000 ms","Estimated Output Cardinality":"9","JIT cache hit":"no","JIT compile status":"Interpreting (finished 2 of 2 interpreted executions)","operatorId":"69"}]]></Details>
+								<Child ID="76_op46_node">
+									<ExecutedOutputCardinality>9</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+					</InnerPlans>
+				</RootRelation>
+			</Plan>
+			<Plan ID="77_group25" Type="Executed" PlanType="Column">
+				<RootRelation ID="77_group25_node" Status="Finished" Physical="True" TypeName="HEX">
+					<Name><![CDATA[AGGREGATION]]></Name>
+					<Summary><![CDATA[GROUPING: ANIMESEASONS.ANIMECODE, ANIMESEASONS.ANIMESEASONNAME, ANIMESEASONS.ANIMESEASONCODE, AGGREGATION: SUM(SUM(ANIMESEASONDETAILS.NUMBEROFEPISODES))]]></Summary>
+					<ExecutionTime>
+						<Timestamps>[{"Pop":[{"start":1720515968767752,"end":1720515968768623}]}]</Timestamps>
+					</ExecutionTime>
+					<UserCPUTime Unit="ms">0.832</UserCPUTime>
+					<Details><![CDATA[{"max numUsedLocalContexts":"1","Non-compiled CPU overhead":"0.411 ms","BitwiseValueBlender":"BitwiseValueBlender{ typeDefs: [VALUEID NOT NULL, VALUEID NOT NULL, VALUEID NOT NULL], min: [0, 0, 0], shift: [0, 2, 6], mask: [0x3, 0xf, 0xf] }","Estimated Output Cardinality":"9","HashColumn(0)":"ANIMESEASONS.ANIMECODE (VALUEID NOT NULL), no output","HashColumn(1)":"ANIMESEASONS.ANIMESEASONNAME (VALUEID NOT NULL)","HashColumn(2)":"ANIMESEASONS.ANIMESEASONCODE (VALUEID NOT NULL)","Memory Allocated":"0.031 MB","Output Spec":"[DocId, ValueId, Value] ANIMECODE NVARCHAR(10), [DocId, ValueId] ANIMESEASONNAME NVARCHAR(25), [DocId, ValueId] ANIMESEASONCODE NVARCHAR(10), [DocId] SEASONNAME NVARCHAR(30), [Value] NUMBEROFEPISODES INT","ProjColumn(3)":"ANIMESEASONDETAILS.RowPos","ProjColumn(4)":"ANIMESEASONS.ANIMECODE (NVARCHAR(10) NOT NULL)","ProjColumn(5)":"ANIMESEASONDETAILS.Source","agg(0)":"Sum(1000006.10000000 (INT)) -> 1000004.10000000 (INT)","rowWidth":"32"}]]></Details>
+					<InnerPlans>
+						<Plan ID="78_op32" Type="Executed" PlanType="Column">
+							<RootRelation ID="78_op32_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+								<Name><![CDATA[PartVidGroupingOffsetsInitOp]]></Name>
+								<Summary><![CDATA[InitOp for PartValueId grouping offsets]]></Summary>
+								<Location><![CDATA[7ec91fa5-1d31-44c5-8261-3e14647ea6b2:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1720515968767765,"end":1720515968768043}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.004</UserCPUTime>
+								<EstimatedOutputCardinality>9</EstimatedOutputCardinality>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 14":"numUsedLocalContexts 1, CPUTime 0.004 ms, CPUWaitTime 0.000 ms, calls 1","Estimated Output Cardinality":"9","operatorId":"53"}]]></Details>
+								<Child ID="79_op31_node">
+									<ExecutedOutputCardinality>9</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="80_op37" Type="Executed" PlanType="Column">
+							<RootRelation ID="80_op37_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+								<Name><![CDATA[LlangOperatorWithRetry<LlangInOperator>]]></Name>
+								<Summary><![CDATA[<Materialize: ANIMESEASONS.ANIMECODE (NVARCHAR(10) NOT NULL), ANIMESEASONS.ANIMECODE (VALUEID NOT NULL)>; <Mark right matching rows preamble>; <Lookup rows in HashMap>; <Produce right matching rows>; <Materialize>; <Materialize: ANIMESEASONS.ANIMESEASONNAME (VALUEID NOT NULL), ANIMESEASONS.ANIMESEASONCODE (VALUEID NOT NULL)>; <Vector GroupBy [Insert Phase]>]]></Summary>
+								<Location><![CDATA[7ec91fa5-1d31-44c5-8261-3e14647ea6b2:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1720515968767752,"end":1720515968768042}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.276</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","Non-compiled CPU overhead":"0.269 ms","calls":"1","pipeline 14":"numUsedLocalContexts 1, CPUTime 0.276 ms, CPUWaitTime 0.000 ms, calls 1","InitLocal CPUTime":"0.002 ms","InitLocal CPUWaitTime":"0.000 ms","FieldToHeader":"1000003","HeaderToField":"1000003","JIT cache hit":"no","JIT compile status":"Interpreting (finished 2 of 2 interpreted executions)","Memory Allocated":"0.031 MB","Number of PayloadHandlers: ":"4","Rows per PayloadHandler: ":"1024","hashtable lookup key":"ANIMESEASONS.ANIMECODE (NVARCHAR(10) NOT NULL)","operatorId":"55"}]]></Details>
+								<Child ID="81_op22_node">
+									<Details><![CDATA[{"ConnectionType":"Logical"}]]></Details>
+								</Child>
+								<Child ID="82_op36_node">
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="83_op39" Type="Executed" PlanType="Column">
+							<RootRelation ID="83_op39_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+								<Name><![CDATA[VectorGroupByMergeScheduler]]></Name>
+								<Summary><![CDATA[VectorGroupBy Scheduler [Merge Phase]]]></Summary>
+								<Location><![CDATA[7ec91fa5-1d31-44c5-8261-3e14647ea6b2:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1720515968768225,"end":1720515968768628}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.401</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 15":"numUsedLocalContexts 1, CPUTime 0.401 ms, CPUWaitTime 0.000 ms, calls 1","Number of Tasks produced":"1","operatorId":"57"}]]></Details>
+							</RootRelation>
+						</Plan>
+						<Plan ID="84_op40" Type="Executed" PlanType="Column">
+							<RootRelation ID="84_op40_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+								<Name><![CDATA[EnforceCompilationByThresholdOpT<>]]></Name>
+								<Summary><![CDATA[]]></Summary>
+								<Location><![CDATA[7ec91fa5-1d31-44c5-8261-3e14647ea6b2:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1720515968768227,"end":1720515968768229}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.002</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 15":"numUsedLocalContexts 1, CPUTime 0.002 ms, CPUWaitTime 0.000 ms, calls 1","TaskStats from op: 79":"count = 0, parentOpId: 4294967295","operatorId":"58"}]]></Details>
+								<Child ID="83_op39_node">
+									<ExecutedOutputCardinality>0</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="85_op41" Type="Executed" PlanType="Column">
+							<RootRelation ID="85_op41_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+								<Name><![CDATA[LlangNoDataOperator]]></Name>
+								<Summary><![CDATA[<Vector GroupBy [Merge Phase]>]]></Summary>
+								<Location><![CDATA[7ec91fa5-1d31-44c5-8261-3e14647ea6b2:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1720515968768101,"end":1720515968768623}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.149</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","Non-compiled CPU overhead":"0.142 ms","calls":"1","pipeline 15":"numUsedLocalContexts 1, CPUTime 0.149 ms, CPUWaitTime 0.000 ms, calls 1","InitLocal CPUTime":"0.002 ms","InitLocal CPUWaitTime":"0.000 ms","JIT cache hit":"no","JIT compile status":"Interpreting (finished 2 of 2 interpreted executions)","TaskStats from op: 78":"count = 0, parentOpId: 4294967295","operatorId":"61"}]]></Details>
+							</RootRelation>
+						</Plan>
+						<Plan ID="72_op42" Type="Executed" PlanType="Column">
+							<RootRelation ID="72_op42_node" Status="NotStarted" Mode="Expert" Physical="True" TypeName="HEX">
+								<Name><![CDATA[LlangOutOperator]]></Name>
+								<Summary><![CDATA[Code-generated operator across relations <see next op>]]></Summary>
+								<Location><![CDATA[7ec91fa5-1d31-44c5-8261-3e14647ea6b2:30040]]></Location>
+								<UserCPUTime Unit="ms">0.000</UserCPUTime>
+								<EstimatedOutputCardinality>9</EstimatedOutputCardinality>
+								<Details><![CDATA[{"max numUsedLocalContexts":"0","calls":"0","Estimated Output Cardinality":"9","FieldToHeader":"1000003"}]]></Details>
+								<Child ID="85_op41_node">
+									<ExecutedOutputCardinality>0</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+					</InnerPlans>
+				</RootRelation>
+			</Plan>
+			<Plan ID="86_group26" Type="Executed" PlanType="Column">
+				<RootRelation ID="86_group26_node" Status="Finished" Physical="True" TypeName="HEX">
+					<Name><![CDATA[HASH JOIN (LEFT OUTER)]]></Name>
+					<Summary><![CDATA[HASH CONDITION: ANIMESEASONS.ANIMECODE = ANIMESEASONDETAILS.ANIMECODE, HASH SIZE: 3, RIGHT SIDE HASH]]></Summary>
+					<ExecutionTime>
+						<Timestamps>[{"Pop":[{"start":1720515968767191,"end":1720515968767612}]}]</Timestamps>
+					</ExecutionTime>
+					<UserCPUTime Unit="ms">0.196</UserCPUTime>
+					<Details><![CDATA[{"max numUsedLocalContexts":"1","Non-compiled CPU overhead":"0.154 ms","Est. Intermediate Cardinality":"9","Est. Left Side Input Cardinality":"3","Est. Output Cardinality":"9","Est. Right Side Input Cardinality":"9","Estimated Output Cardinality":"9","Output Spec":"[DocId, ValueId, Value] ANIMECODE NVARCHAR(10), [DocId, ValueId] ANIMESEASONNAME NVARCHAR(25), [DocId, ValueId] ANIMESEASONCODE NVARCHAR(10), [DocId] SEASONNAME NVARCHAR(30), [Value] ? INT","hashtable collect key":"ANIMESEASONDETAILS.ANIMECODE (NVARCHAR(10))","hashtable lookup key":"ANIMESEASONS.ANIMECODE (NVARCHAR(10) NOT NULL)"}]]></Details>
+					<InnerPlans>
+						<Plan ID="87_op34" Type="Executed" PlanType="Column">
+							<RootRelation ID="87_op34_node" Status="NotStarted" Mode="Expert" Physical="True" TypeName="HEX">
+								<Name><![CDATA[LlangOperatorWithRetry<LlangInOperator>]]></Name>
+								<Summary><![CDATA[Code-generated operator across relations <see next op>]]></Summary>
+								<Location><![CDATA[7ec91fa5-1d31-44c5-8261-3e14647ea6b2:30040]]></Location>
+								<UserCPUTime Unit="ms">0.000</UserCPUTime>
+								<EstimatedOutputCardinality>9</EstimatedOutputCardinality>
+								<Details><![CDATA[{"max numUsedLocalContexts":"0","calls":"0","Estimated Output Cardinality":"9","FieldToHeader":"1000003","HeaderToField":"1000003","hashtable lookup key":"ANIMESEASONS.ANIMECODE (NVARCHAR(10) NOT NULL)"}]]></Details>
+								<Child ID="88_op33_node">
+									<Details><![CDATA[{"ConnectionType":"Logical"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="89_op35" Type="Executed" PlanType="Column">
+							<RootRelation ID="89_op35_node" Status="NotStarted" Mode="Expert" Physical="True" TypeName="HEX">
+								<Name><![CDATA[LlangOperatorWithRetry<LlangInOperator>]]></Name>
+								<Summary><![CDATA[Code-generated operator across relations <see next op>]]></Summary>
+								<Location><![CDATA[7ec91fa5-1d31-44c5-8261-3e14647ea6b2:30040]]></Location>
+								<UserCPUTime Unit="ms">0.000</UserCPUTime>
+								<EstimatedOutputCardinality>9</EstimatedOutputCardinality>
+								<Details><![CDATA[{"max numUsedLocalContexts":"0","calls":"0","Estimated Output Cardinality":"9","FieldToHeader":"1000003","HeaderToField":"1000003","hashtable lookup key":"ANIMESEASONS.ANIMECODE (NVARCHAR(10) NOT NULL)"}]]></Details>
+								<Child ID="87_op34_node">
+									<Details><![CDATA[{"ConnectionType":"Logical"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="82_op36" Type="Executed" PlanType="Column">
+							<RootRelation ID="82_op36_node" Status="NotStarted" Mode="Expert" Physical="True" TypeName="HEX">
+								<Name><![CDATA[LlangOperatorWithRetry<LlangInOperator>]]></Name>
+								<Summary><![CDATA[Code-generated operator across relations <see next op>]]></Summary>
+								<Location><![CDATA[7ec91fa5-1d31-44c5-8261-3e14647ea6b2:30040]]></Location>
+								<UserCPUTime Unit="ms">0.000</UserCPUTime>
+								<EstimatedOutputCardinality>9</EstimatedOutputCardinality>
+								<Details><![CDATA[{"max numUsedLocalContexts":"0","calls":"0","Estimated Output Cardinality":"9","FieldToHeader":"1000003","HeaderToField":"1000003","hashtable lookup key":"ANIMESEASONS.ANIMECODE (NVARCHAR(10) NOT NULL)"}]]></Details>
+								<Child ID="89_op35_node">
+									<Details><![CDATA[{"ConnectionType":"Logical"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="90_op20" Type="Executed" PlanType="Column">
+							<RootRelation ID="90_op20_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+								<Name><![CDATA[PartitionedHashJoinScheduleCollectOp<PartitionedHashJoinTargetMap<(unsignedchar)3,false>>]]></Name>
+								<Summary><![CDATA[Schedule partitioned hash join collect jobs]]></Summary>
+								<Location><![CDATA[7ec91fa5-1d31-44c5-8261-3e14647ea6b2:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1720515968767601,"end":1720515968767623}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.021</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 8":"numUsedLocalContexts 1, CPUTime 0.021 ms, CPUWaitTime 0.000 ms, calls 1","EstimatedElements":"6","Partitions":"8","operatorId":"32"}]]></Details>
+								<Child ID="91_op19_node">
+									<Details><![CDATA[{"ConnectionType":"Logical"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="92_op21" Type="Executed" PlanType="Column">
+							<RootRelation ID="92_op21_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+								<Name><![CDATA[EnforceCompilationByThresholdOpT<>]]></Name>
+								<Summary><![CDATA[]]></Summary>
+								<Location><![CDATA[7ec91fa5-1d31-44c5-8261-3e14647ea6b2:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1720515968767611,"end":1720515968767612}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.001</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 8":"numUsedLocalContexts 1, CPUTime 0.001 ms, CPUWaitTime 0.000 ms, calls 1","TaskStats from op: 76":"count = 0, parentOpId: 4294967295","operatorId":"33"}]]></Details>
+								<Child ID="90_op20_node">
+									<ExecutedOutputCardinality>0</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="81_op22" Type="Executed" PlanType="Column">
+							<RootRelation ID="81_op22_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+								<Name><![CDATA[PartitionedHashJoinCollectOp<PartitionedHashJoinTargetMap<(unsignedchar)3,false>,false>]]></Name>
+								<Summary><![CDATA[]]></Summary>
+								<Location><![CDATA[7ec91fa5-1d31-44c5-8261-3e14647ea6b2:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1720515968767595,"end":1720515968767641}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.014</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 8":"numUsedLocalContexts 1, CPUTime 0.014 ms, CPUWaitTime 0.000 ms, calls 1","InitLocal CPUTime":"0.004 ms","InitLocal CPUWaitTime":"0.000 ms","Finish CPUTime":"0.001 ms","Finish CPUWaitTime":"0.000 ms","BloomFilter":"IsNotSet","JIT cache hit":"yes","JIT compile status":"Compiled","JIT opt level":"O2","MarkLeft":"False","Partitions":"8","TaskStats from op: 75":"count = 0, parentOpId: 4294967295","TotalCoalMapSize":"3","TotalInsertSize":"3","hashtable collect key":"ANIMESEASONDETAILS.ANIMECODE (NVARCHAR(10))","operatorId":"34"}]]></Details>
+								<Child ID="90_op20_node">
+									<Details><![CDATA[{"ConnectionType":"Logical"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="91_op19" Type="Executed" PlanType="Column">
+							<RootRelation ID="91_op19_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+								<Name><![CDATA[LlangNoDataOperator]]></Name>
+								<Summary><![CDATA[<Materialize VectorGroupBy Results>; <Materialize>; <Materialize: ANIMESEASONDETAILS.ANIMECODE (NVARCHAR(10))>; <Partition Input>]]></Summary>
+								<Location><![CDATA[7ec91fa5-1d31-44c5-8261-3e14647ea6b2:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1720515968767191,"end":1720515968767510}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.160</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","Non-compiled CPU overhead":"0.154 ms","calls":"1","JIT wait time":"0.001 ms","pipeline 7":"numUsedLocalContexts 1, CPUTime 0.160 ms, CPUWaitTime 0.000 ms, calls 1","InitLocal CPUTime":"0.002 ms","InitLocal CPUWaitTime":"0.000 ms","FieldToHeader":"1000003","HeaderToField":"1000003","JIT cache hit":"no","JIT compile status":"Interpreting (finished 2 of 2 interpreted executions)","operatorId":"31"}]]></Details>
+								<Child ID="93_op18_node">
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+					</InnerPlans>
+				</RootRelation>
+			</Plan>
+			<Plan ID="94_group27" Type="Executed" PlanType="Column">
+				<RootRelation ID="94_group27_node" Status="Finished" Physical="True" TypeName="HEX">
+					<Name><![CDATA[AGGREGATION]]></Name>
+					<Summary><![CDATA[GROUPING: ANIMESEASONDETAILS.ANIMECODE, AGGREGATION: SUM(ANIMESEASONDETAILS.NUMBEROFEPISODES)]]></Summary>
+					<ExecutionTime>
+						<Timestamps>[{"Pop":[{"start":1720515968766907,"end":1720515968767516}]}]</Timestamps>
+					</ExecutionTime>
+					<UserCPUTime Unit="ms">0.670</UserCPUTime>
+					<Details><![CDATA[{"max numUsedLocalContexts":"1","Non-compiled CPU overhead":"0.293 ms","BitwiseValueBlender":"BitwiseValueBlender{ typeDefs: [VALUEID NOT NULL], min: [0], shift: [0], mask: [0x3] }","Estimated Output Cardinality":"3","HashColumn(1)":"ANIMESEASONDETAILS.ANIMECODE (VALUEID NOT NULL), no output","Memory Allocated":"0.000 MB","Output Spec":"[DocId, ValueId, Value] ANIMECODE NVARCHAR(10), [DocId] SEASONNAME NVARCHAR(30), [Value] ? INT","ProjColumn(0)":"ANIMESEASONDETAILS.ANIMECODE (VALUEID NOT NULL)","ProjColumn(2)":"ANIMESEASONDETAILS.RowPos","ProjColumn(3)":"ANIMESEASONDETAILS.Source","agg(0)":"Sum(ANIMESEASONDETAILS.NUMBEROFEPISODES (INT NOT NULL)) -> 1000006.10000000 (INT NOT NULL)","rowWidth":"16"}]]></Details>
+					<InnerPlans>
+						<Plan ID="95_op15" Type="Executed" PlanType="Column">
+							<RootRelation ID="95_op15_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+								<Name><![CDATA[LlangNoDataOperator]]></Name>
+								<Summary><![CDATA[<Vector GroupBy [Merge Phase]>]]></Summary>
+								<Location><![CDATA[7ec91fa5-1d31-44c5-8261-3e14647ea6b2:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1720515968767181,"end":1720515968767510}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.152</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","Non-compiled CPU overhead":"0.112 ms","calls":"1","pipeline 7":"numUsedLocalContexts 1, CPUTime 0.152 ms, CPUWaitTime 0.000 ms, calls 1","InitLocal CPUTime":"0.002 ms","InitLocal CPUWaitTime":"0.000 ms","JIT cache hit":"no","JIT compile status":"Interpreting (finished 2 of 2 interpreted executions)","TaskStats from op: 73":"count = 0, parentOpId: 4294967295","operatorId":"27"}]]></Details>
+							</RootRelation>
+						</Plan>
+						<Plan ID="93_op18" Type="Executed" PlanType="Column">
+							<RootRelation ID="93_op18_node" Status="NotStarted" Mode="Expert" Physical="True" TypeName="HEX">
+								<Name><![CDATA[LlangNoDataOperator]]></Name>
+								<Summary><![CDATA[Code-generated operator across relations <see next op>]]></Summary>
+								<Location><![CDATA[7ec91fa5-1d31-44c5-8261-3e14647ea6b2:30040]]></Location>
+								<UserCPUTime Unit="ms">0.000</UserCPUTime>
+								<EstimatedOutputCardinality>3</EstimatedOutputCardinality>
+								<Details><![CDATA[{"max numUsedLocalContexts":"0","calls":"0","Estimated Output Cardinality":"3","FieldToHeader":"1000003","HeaderToField":"1000003"}]]></Details>
+								<Child ID="96_op17_node">
+									<Details><![CDATA[{"ConnectionType":"Logical"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="97_op11" Type="Executed" PlanType="Column">
+							<RootRelation ID="97_op11_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+								<Name><![CDATA[LlangOperatorWithRetry<LlangInOperator>]]></Name>
+								<Summary><![CDATA[<Materialize: ANIMESEASONDETAILS.ANIMECODE (VALUEID NOT NULL), ANIMESEASONDETAILS.NUMBEROFEPISODES (INT NOT NULL)>; <Vector GroupBy [Insert Phase]>]]></Summary>
+								<Location><![CDATA[7ec91fa5-1d31-44c5-8261-3e14647ea6b2:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1720515968766907,"end":1720515968767122}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.191</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","Non-compiled CPU overhead":"0.181 ms","calls":"1","JIT wait time":"0.001 ms","pipeline 6":"numUsedLocalContexts 1, CPUTime 0.191 ms, CPUWaitTime 0.000 ms, calls 1","InitLocal CPUTime":"0.004 ms","InitLocal CPUWaitTime":"0.000 ms","HeaderToField":"1000003","JIT cache hit":"no","JIT compile status":"Interpreting (finished 2 of 2 interpreted executions)","Memory Allocated":"0.000 MB","Number of PayloadHandlers: ":"4","Rows per PayloadHandler: ":"4","operatorId":"21"}]]></Details>
+								<Child ID="98_op10_node">
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="99_op9" Type="Executed" PlanType="Column">
+							<RootRelation ID="99_op9_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+								<Name><![CDATA[PartVidGroupingOffsetsInitOp]]></Name>
+								<Summary><![CDATA[InitOp for PartValueId grouping offsets]]></Summary>
+								<Location><![CDATA[7ec91fa5-1d31-44c5-8261-3e14647ea6b2:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1720515968766930,"end":1720515968767123}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.006</UserCPUTime>
+								<EstimatedOutputCardinality>3</EstimatedOutputCardinality>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 6":"numUsedLocalContexts 1, CPUTime 0.006 ms, CPUWaitTime 0.000 ms, calls 1","Estimated Output Cardinality":"3","operatorId":"19"}]]></Details>
+								<Child ID="100_op8_node">
+									<ExecutedOutputCardinality>25</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="101_op14" Type="Executed" PlanType="Column">
+							<RootRelation ID="101_op14_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+								<Name><![CDATA[EnforceCompilationByThresholdOpT<>]]></Name>
+								<Summary><![CDATA[]]></Summary>
+								<Location><![CDATA[7ec91fa5-1d31-44c5-8261-3e14647ea6b2:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1720515968767198,"end":1720515968767200}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.002</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 7":"numUsedLocalContexts 1, CPUTime 0.002 ms, CPUWaitTime 0.000 ms, calls 1","TaskStats from op: 74":"count = 0, parentOpId: 4294967295","operatorId":"24"}]]></Details>
+								<Child ID="102_op13_node">
+									<ExecutedOutputCardinality>0</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="102_op13" Type="Executed" PlanType="Column">
+							<RootRelation ID="102_op13_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+								<Name><![CDATA[VectorGroupByMergeScheduler]]></Name>
+								<Summary><![CDATA[VectorGroupBy Scheduler [Merge Phase]]]></Summary>
+								<Location><![CDATA[7ec91fa5-1d31-44c5-8261-3e14647ea6b2:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1720515968767195,"end":1720515968767516}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.319</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 7":"numUsedLocalContexts 1, CPUTime 0.319 ms, CPUWaitTime 0.000 ms, calls 1","Number of Tasks produced":"1","operatorId":"23"}]]></Details>
+							</RootRelation>
+						</Plan>
+						<Plan ID="96_op17" Type="Executed" PlanType="Column">
+							<RootRelation ID="96_op17_node" Status="NotStarted" Mode="Expert" Physical="True" TypeName="HEX">
+								<Name><![CDATA[LlangNoDataOperator]]></Name>
+								<Summary><![CDATA[Code-generated operator across relations <see next op>]]></Summary>
+								<Location><![CDATA[7ec91fa5-1d31-44c5-8261-3e14647ea6b2:30040]]></Location>
+								<UserCPUTime Unit="ms">0.000</UserCPUTime>
+								<EstimatedOutputCardinality>3</EstimatedOutputCardinality>
+								<Details><![CDATA[{"max numUsedLocalContexts":"0","calls":"0","Estimated Output Cardinality":"3","FieldToHeader":"1000003","HeaderToField":"1000003"}]]></Details>
+								<Child ID="103_op16_node">
+									<Details><![CDATA[{"ConnectionType":"Logical"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="103_op16" Type="Executed" PlanType="Column">
+							<RootRelation ID="103_op16_node" Status="NotStarted" Mode="Expert" Physical="True" TypeName="HEX">
+								<Name><![CDATA[LlangNoDataOperator]]></Name>
+								<Summary><![CDATA[Code-generated operator across relations <see next op>]]></Summary>
+								<Location><![CDATA[7ec91fa5-1d31-44c5-8261-3e14647ea6b2:30040]]></Location>
+								<UserCPUTime Unit="ms">0.000</UserCPUTime>
+								<EstimatedOutputCardinality>3</EstimatedOutputCardinality>
+								<Details><![CDATA[{"max numUsedLocalContexts":"0","calls":"0","Estimated Output Cardinality":"3","FieldToHeader":"1000003","HeaderToField":"1000003"}]]></Details>
+								<Child ID="95_op15_node">
+									<ExecutedOutputCardinality>0</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+					</InnerPlans>
+				</RootRelation>
+			</Plan>
+			<Plan ID="104_group28" Type="Executed" PlanType="Column">
+				<RootRelation ID="104_group28_node" Status="Finished" Physical="True" TypeName="HEX">
+					<Name><![CDATA[TABLE SCAN]]></Name>
+					<Summary><![CDATA[]]></Summary>
+					<TableType><![CDATA[COLUMN TABLE]]></TableType>
+					<Schema><![CDATA[SPIDERMAN_1]]></Schema>
+					<ObjectName><![CDATA[ANIMESEASONDETAILS]]></ObjectName>
+					<ExecutionTime>
+						<Timestamps>[{"Pop":[{"start":1720515968766737,"end":1720515968766808}]}]</Timestamps>
+					</ExecutionTime>
+					<UserCPUTime Unit="ms">0.118</UserCPUTime>
+					<Details><![CDATA[{"max numUsedLocalContexts":"1","Active Table_Fragments":"ANIMESEASONDETAILS~delta1","Estimated Output Cardinality":"25","Filter":"<empty>","Output Spec":"[DocId, ValueId] ANIMECODE NVARCHAR(10), [DocId] SEASONNAME NVARCHAR(30), [DocId, Value] NUMBEROFEPISODES INT"}]]></Details>
+					<InnerPlans>
+						<Plan ID="105_group14" Type="Executed" PlanType="Column">
+							<RootRelation ID="105_group14_node" Status="Finished" Physical="True" TypeName="HEX">
+								<Name><![CDATA[TableScanControl]]></Name>
+								<Summary><![CDATA[]]></Summary>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1720515968766740,"end":1720515968766809}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.008</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1"}]]></Details>
+								<InnerPlans>
+									<Plan ID="106_op1" Type="Executed" PlanType="Column">
+										<RootRelation ID="106_op1_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+											<Name><![CDATA[OpenFragmentsControlOp]]></Name>
+											<Summary><![CDATA[]]></Summary>
+											<Location><![CDATA[7ec91fa5-1d31-44c5-8261-3e14647ea6b2:30040]]></Location>
+											<ExecutionTime>
+												<Timestamps>[{"Pop":[{"start":1720515968766740,"end":1720515968766809}]}]</Timestamps>
+											</ExecutionTime>
+											<UserCPUTime Unit="ms">0.008</UserCPUTime>
+											<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 2":"numUsedLocalContexts 1, CPUTime 0.008 ms, CPUWaitTime 0.000 ms, calls 1","operatorId":"3"}]]></Details>
+										</RootRelation>
+									</Plan>
+								</InnerPlans>
+							</RootRelation>
+						</Plan>
+						<Plan ID="107_group13" Type="Executed" PlanType="Column">
+							<RootRelation ID="107_group13_node" Status="Finished" Physical="True" TypeName="HEX">
+								<Name><![CDATA[ANIMESEASONDETAILS[~main, ~delta1, ~delta2]]]></Name>
+								<Summary><![CDATA[]]></Summary>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1720515968766821,"end":1720515968766929}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.047</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1"}]]></Details>
+								<InnerPlans>
+									<Plan ID="108_group15" Type="Executed" PlanType="Column">
+										<RootRelation ID="108_group15_node" Status="Finished" Physical="True" TypeName="HEX">
+											<Name><![CDATA[FragmentScan]]></Name>
+											<Summary><![CDATA[]]></Summary>
+											<ExecutionTime>
+												<Timestamps>[{"Pop":[{"start":1720515968766821,"end":1720515968766882}]}]</Timestamps>
+											</ExecutionTime>
+											<UserCPUTime Unit="ms">0.023</UserCPUTime>
+											<Details><![CDATA[{"max numUsedLocalContexts":"1"}]]></Details>
+											<InnerPlans>
+												<Plan ID="109_op3" Type="Executed" PlanType="Column">
+													<RootRelation ID="109_op3_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+														<Name><![CDATA[FragmentScanInitOp]]></Name>
+														<Summary><![CDATA[Initialize scan on SPIDERMAN_1.ANIMESEASONDETAILS~main, ~delta1, ~delta2 of group 1]]></Summary>
+														<Location><![CDATA[7ec91fa5-1d31-44c5-8261-3e14647ea6b2:30040]]></Location>
+														<ExecutionTime>
+															<Timestamps>[{"Pop":[{"start":1720515968766821,"end":1720515968766842}]}]</Timestamps>
+														</ExecutionTime>
+														<UserCPUTime Unit="ms">0.007</UserCPUTime>
+														<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 3":"numUsedLocalContexts 1, CPUTime 0.007 ms, CPUWaitTime 0.000 ms, calls 1","operatorId":"9"}]]></Details>
+														<Child ID="110_op4_node">
+															<ExecutedOutputCardinality>0</ExecutedOutputCardinality>
+															<Details><![CDATA[{"ConnectionType":"Reversed"}]]></Details>
+														</Child>
+													</RootRelation>
+												</Plan>
+												<Plan ID="111_op5" Type="Executed" PlanType="Column">
+													<RootRelation ID="111_op5_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+														<Name><![CDATA[FragmentScanEstimationOp]]></Name>
+														<Summary><![CDATA[Estimate scan on SPIDERMAN_1.ANIMESEASONDETAILS~main, ~delta1, ~delta2 of group 1]]></Summary>
+														<Location><![CDATA[7ec91fa5-1d31-44c5-8261-3e14647ea6b2:30040]]></Location>
+														<ExecutionTime>
+															<Timestamps>[{"Pop":[{"start":1720515968766860,"end":1720515968766871}]}]</Timestamps>
+														</ExecutionTime>
+														<UserCPUTime Unit="ms">0.005</UserCPUTime>
+														<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 4":"numUsedLocalContexts 1, CPUTime 0.005 ms, CPUWaitTime 0.000 ms, calls 1","StateAfterRun (pfNr 1)":"{ResultSizeEstimation: {RowCountEstimation: {exactly 25 rows}, ChunkCapacityBound: 25, LargestIntermediateResult: 0}}","operatorId":"10"}]]></Details>
+														<Child ID="112_op6_node">
+															<ExecutedOutputCardinality>0</ExecutedOutputCardinality>
+															<Details><![CDATA[{"ConnectionType":"Reversed"}]]></Details>
+														</Child>
+													</RootRelation>
+												</Plan>
+												<Plan ID="100_op8" Type="Executed" PlanType="Column">
+													<RootRelation ID="100_op8_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+														<Name><![CDATA[FragmentScanOp_RpRp]]></Name>
+														<Summary><![CDATA[Scan on SPIDERMAN_1.ANIMESEASONDETAILS~main, ~delta1, ~delta2 of group 1]]></Summary>
+														<Location><![CDATA[7ec91fa5-1d31-44c5-8261-3e14647ea6b2:30040]]></Location>
+														<ExecutionTime>
+															<Timestamps>[{"Pop":[{"start":1720515968766921,"end":1720515968767124}]}]</Timestamps>
+														</ExecutionTime>
+														<UserCPUTime Unit="ms">0.006</UserCPUTime>
+														<EstimatedOutputCardinality>25</EstimatedOutputCardinality>
+														<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 6":"numUsedLocalContexts 1, CPUTime 0.006 ms, CPUWaitTime 0.000 ms, calls 1","Estimated Output Cardinality":"25","Fragment Cardinality (Name: ~delta1, PreparedFragmentNr: 1)":"25 rows","TaskStats from op: 72":"count = 0, parentOpId: 4294967295\u000aSampling: \u000acalculated cost: 0 for op: 8 taskSize: 18446744073709551615 will run in seq: 1 totalRowCount: 25\u000a","operatorId":"12"}]]></Details>
+														<Child ID="113_op12_node">
+															<ExecutedOutputCardinality>25</ExecutedOutputCardinality>
+															<Details><![CDATA[{"ConnectionType":"Reversed"}]]></Details>
+														</Child>
+													</RootRelation>
+												</Plan>
+												<Plan ID="114_op7" Type="Executed" PlanType="Column">
+													<RootRelation ID="114_op7_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+														<Name><![CDATA[FragmentScanIndexLookupOp]]></Name>
+														<Summary><![CDATA[Index Lookup on SPIDERMAN_1.ANIMESEASONDETAILS~main, ~delta1, ~delta2]]></Summary>
+														<Location><![CDATA[7ec91fa5-1d31-44c5-8261-3e14647ea6b2:30040]]></Location>
+														<ExecutionTime>
+															<Timestamps>[{"Pop":[{"start":1720515968766876,"end":1720515968766882}]}]</Timestamps>
+														</ExecutionTime>
+														<UserCPUTime Unit="ms">0.005</UserCPUTime>
+														<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 5":"numUsedLocalContexts 1, CPUTime 0.005 ms, CPUWaitTime 0.000 ms, calls 1","StateAfterRun (pfNr 1)":"{IndexLookupResult: n/a}","operatorId":"11"}]]></Details>
+													</RootRelation>
+												</Plan>
+											</InnerPlans>
+										</RootRelation>
+									</Plan>
+									<Plan ID="115_group16" Type="Executed" PlanType="Column">
+										<RootRelation ID="115_group16_node" Status="Finished" Physical="True" TypeName="HEX">
+											<Name><![CDATA[Visibility]]></Name>
+											<Summary><![CDATA[Lookup]]></Summary>
+											<ExecutionTime>
+												<Timestamps>[{"Pop":[{"start":1720515968766824,"end":1720515968766929}]}]</Timestamps>
+											</ExecutionTime>
+											<UserCPUTime Unit="ms">0.024</UserCPUTime>
+											<Details><![CDATA[{"max numUsedLocalContexts":"1"}]]></Details>
+											<InnerPlans>
+												<Plan ID="110_op4" Type="Executed" PlanType="Column">
+													<RootRelation ID="110_op4_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+														<Name><![CDATA[VisibilityLookupOp]]></Name>
+														<Summary><![CDATA[Lookup of all visible rows on SPIDERMAN_1.ANIMESEASONDETAILS~main, ~delta1, ~delta2 of group 3]]></Summary>
+														<Location><![CDATA[7ec91fa5-1d31-44c5-8261-3e14647ea6b2:30040]]></Location>
+														<ExecutionTime>
+															<Timestamps>[{"Pop":[{"start":1720515968766824,"end":1720515968766838}]}]</Timestamps>
+														</ExecutionTime>
+														<UserCPUTime Unit="ms">0.014</UserCPUTime>
+														<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 3":"numUsedLocalContexts 1, CPUTime 0.014 ms, CPUWaitTime 0.000 ms, calls 1","StateBeforeFinish (pfNr 1)":"{VisibilityLookupResult: bitvec with size 26}","operatorId":"13"}]]></Details>
+													</RootRelation>
+												</Plan>
+												<Plan ID="112_op6" Type="Executed" PlanType="Column">
+													<RootRelation ID="112_op6_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+														<Name><![CDATA[VisibilityLookupEstimationOp]]></Name>
+														<Summary><![CDATA[Estimate visible rows on SPIDERMAN_1.ANIMESEASONDETAILS~main, ~delta1, ~delta2 of group 3]]></Summary>
+														<Location><![CDATA[7ec91fa5-1d31-44c5-8261-3e14647ea6b2:30040]]></Location>
+														<ExecutionTime>
+															<Timestamps>[{"Pop":[{"start":1720515968766862,"end":1720515968766868}]}]</Timestamps>
+														</ExecutionTime>
+														<UserCPUTime Unit="ms">0.006</UserCPUTime>
+														<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 4":"numUsedLocalContexts 1, CPUTime 0.006 ms, CPUWaitTime 0.000 ms, calls 1","StateAfterRun (pfNr 1)":"{ResultSizeEstimation: {RowCountEstimation: {exactly 25 rows}, ChunkCapacityBound: 25, LargestIntermediateResult: 0}}","operatorId":"14"}]]></Details>
+													</RootRelation>
+												</Plan>
+												<Plan ID="113_op12" Type="Executed" PlanType="Column">
+													<RootRelation ID="113_op12_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+														<Name><![CDATA[VisibilityLookupResultChopOp]]></Name>
+														<Summary><![CDATA[Chop result of group 3 into ranges]]></Summary>
+														<Location><![CDATA[7ec91fa5-1d31-44c5-8261-3e14647ea6b2:30040]]></Location>
+														<ExecutionTime>
+															<Timestamps>[{"Pop":[{"start":1720515968766925,"end":1720515968766929}]}]</Timestamps>
+														</ExecutionTime>
+														<UserCPUTime Unit="ms">0.004</UserCPUTime>
+														<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 6":"numUsedLocalContexts 1, CPUTime 0.004 ms, CPUWaitTime 0.000 ms, calls 1","operatorId":"15"}]]></Details>
+													</RootRelation>
+												</Plan>
+											</InnerPlans>
+										</RootRelation>
+									</Plan>
+								</InnerPlans>
+							</RootRelation>
+						</Plan>
+						<Plan ID="116_op2" Type="Executed" PlanType="Column">
+							<RootRelation ID="116_op2_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+								<Name><![CDATA[OpenFragmentsOp<0u>]]></Name>
+								<Summary><![CDATA[Open Fragments SPIDERMAN_1.ANIMESEASONDETAILS~main, ~delta1, ~delta2]]></Summary>
+								<Location><![CDATA[7ec91fa5-1d31-44c5-8261-3e14647ea6b2:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1720515968766747,"end":1720515968766808}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.061</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 2":"numUsedLocalContexts 1, CPUTime 0.061 ms, CPUWaitTime 0.000 ms, calls 1","operatorId":"4"}]]></Details>
+								<Child ID="106_op1_node">
+									<ExecutedOutputCardinality>0</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="98_op10" Type="Executed" PlanType="Column">
+							<RootRelation ID="98_op10_node" Status="NotStarted" Mode="Expert" Physical="True" TypeName="HEX">
+								<Name><![CDATA[LlangOperatorWithRetry<LlangInOperator>]]></Name>
+								<Summary><![CDATA[Code-generated operator across relations <see next op>]]></Summary>
+								<Location><![CDATA[7ec91fa5-1d31-44c5-8261-3e14647ea6b2:30040]]></Location>
+								<UserCPUTime Unit="ms">0.000</UserCPUTime>
+								<EstimatedOutputCardinality>25</EstimatedOutputCardinality>
+								<Details><![CDATA[{"max numUsedLocalContexts":"0","calls":"0","Estimated Output Cardinality":"25","HeaderToField":"1000003"}]]></Details>
+								<Child ID="99_op9_node">
+									<ExecutedOutputCardinality>25</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="117_op0" Type="Executed" PlanType="Column">
+							<RootRelation ID="117_op0_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+								<Name><![CDATA[NoRunOperator]]></Name>
+								<Summary><![CDATA[]]></Summary>
+								<Location><![CDATA[7ec91fa5-1d31-44c5-8261-3e14647ea6b2:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1720515968766737,"end":1720515968766738},{"start":1720515968766879,"end":1720515968766880}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.002</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"2","pipeline 1":"numUsedLocalContexts 1, CPUTime 0.001 ms, CPUWaitTime 0.000 ms, calls 1","pipeline 5":"numUsedLocalContexts 1, CPUTime 0.001 ms, CPUWaitTime 0.000 ms, calls 1","operatorId":"2"}]]></Details>
+								<Child ID="114_op7_node">
+									<ExecutedOutputCardinality>0</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+					</InnerPlans>
+				</RootRelation>
+			</Plan>
+			<Plan ID="118_group29" Type="Executed" PlanType="Column">
+				<RootRelation ID="118_group29_node" Status="Finished" Physical="True" TypeName="HEX">
+					<Name><![CDATA[TABLE SCAN]]></Name>
+					<Summary><![CDATA[]]></Summary>
+					<TableType><![CDATA[COLUMN TABLE]]></TableType>
+					<Schema><![CDATA[SPIDERMAN_1]]></Schema>
+					<ObjectName><![CDATA[ANIMESEASONS]]></ObjectName>
+					<ExecutionTime>
+						<Timestamps>[{"Pop":[{"start":1720515968767645,"end":1720515968767689}]}]</Timestamps>
+					</ExecutionTime>
+					<UserCPUTime Unit="ms">0.072</UserCPUTime>
+					<Details><![CDATA[{"max numUsedLocalContexts":"1","Active Table_Fragments":"ANIMESEASONS~delta1","Estimated Output Cardinality":"9","Filter":"<empty>","Output Spec":"[DocId, ValueId, Value] ANIMECODE NVARCHAR(10), [DocId] ANIMESEASONNAME NVARCHAR(25), [DocId] ANIMESEASONCODE NVARCHAR(10)"}]]></Details>
+					<InnerPlans>
+						<Plan ID="119_group20" Type="Executed" PlanType="Column">
+							<RootRelation ID="119_group20_node" Status="Finished" Physical="True" TypeName="HEX">
+								<Name><![CDATA[TableScanControl]]></Name>
+								<Summary><![CDATA[]]></Summary>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1720515968767648,"end":1720515968767689}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.002</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1"}]]></Details>
+								<InnerPlans>
+									<Plan ID="120_op24" Type="Executed" PlanType="Column">
+										<RootRelation ID="120_op24_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+											<Name><![CDATA[OpenFragmentsControlOp]]></Name>
+											<Summary><![CDATA[]]></Summary>
+											<Location><![CDATA[7ec91fa5-1d31-44c5-8261-3e14647ea6b2:30040]]></Location>
+											<ExecutionTime>
+												<Timestamps>[{"Pop":[{"start":1720515968767648,"end":1720515968767689}]}]</Timestamps>
+											</ExecutionTime>
+											<UserCPUTime Unit="ms">0.002</UserCPUTime>
+											<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 10":"numUsedLocalContexts 1, CPUTime 0.002 ms, CPUWaitTime 0.000 ms, calls 1","operatorId":"36"}]]></Details>
+										</RootRelation>
+									</Plan>
+								</InnerPlans>
+							</RootRelation>
+						</Plan>
+						<Plan ID="121_group19" Type="Executed" PlanType="Column">
+							<RootRelation ID="121_group19_node" Status="Finished" Physical="True" TypeName="HEX">
+								<Name><![CDATA[ANIMESEASONS[~main, ~delta1, ~delta2]]]></Name>
+								<Summary><![CDATA[]]></Summary>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1720515968767696,"end":1720515968767764}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.029</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1"}]]></Details>
+								<InnerPlans>
+									<Plan ID="122_group22" Type="Executed" PlanType="Column">
+										<RootRelation ID="122_group22_node" Status="Finished" Physical="True" TypeName="HEX">
+											<Name><![CDATA[Visibility]]></Name>
+											<Summary><![CDATA[Lookup]]></Summary>
+											<ExecutionTime>
+												<Timestamps>[{"Pop":[{"start":1720515968767698,"end":1720515968767764}]}]</Timestamps>
+											</ExecutionTime>
+											<UserCPUTime Unit="ms">0.014</UserCPUTime>
+											<Details><![CDATA[{"max numUsedLocalContexts":"1"}]]></Details>
+											<InnerPlans>
+												<Plan ID="123_op27" Type="Executed" PlanType="Column">
+													<RootRelation ID="123_op27_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+														<Name><![CDATA[VisibilityLookupOp]]></Name>
+														<Summary><![CDATA[Lookup of all visible rows on SPIDERMAN_1.ANIMESEASONS~main, ~delta1, ~delta2 of group 7]]></Summary>
+														<Location><![CDATA[7ec91fa5-1d31-44c5-8261-3e14647ea6b2:30040]]></Location>
+														<ExecutionTime>
+															<Timestamps>[{"Pop":[{"start":1720515968767698,"end":1720515968767704}]}]</Timestamps>
+														</ExecutionTime>
+														<UserCPUTime Unit="ms">0.006</UserCPUTime>
+														<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 11":"numUsedLocalContexts 1, CPUTime 0.006 ms, CPUWaitTime 0.000 ms, calls 1","StateBeforeFinish (pfNr 1)":"{VisibilityLookupResult: bitvec with size 10}","operatorId":"46"}]]></Details>
+													</RootRelation>
+												</Plan>
+												<Plan ID="124_op29" Type="Executed" PlanType="Column">
+													<RootRelation ID="124_op29_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+														<Name><![CDATA[VisibilityLookupEstimationOp]]></Name>
+														<Summary><![CDATA[Estimate visible rows on SPIDERMAN_1.ANIMESEASONS~main, ~delta1, ~delta2 of group 7]]></Summary>
+														<Location><![CDATA[7ec91fa5-1d31-44c5-8261-3e14647ea6b2:30040]]></Location>
+														<ExecutionTime>
+															<Timestamps>[{"Pop":[{"start":1720515968767716,"end":1720515968767721}]}]</Timestamps>
+														</ExecutionTime>
+														<UserCPUTime Unit="ms">0.005</UserCPUTime>
+														<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 12":"numUsedLocalContexts 1, CPUTime 0.005 ms, CPUWaitTime 0.000 ms, calls 1","StateAfterRun (pfNr 1)":"{ResultSizeEstimation: {RowCountEstimation: {exactly 9 rows}, ChunkCapacityBound: 9, LargestIntermediateResult: 0}}","operatorId":"47"}]]></Details>
+													</RootRelation>
+												</Plan>
+												<Plan ID="125_op38" Type="Executed" PlanType="Column">
+													<RootRelation ID="125_op38_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+														<Name><![CDATA[VisibilityLookupResultChopOp]]></Name>
+														<Summary><![CDATA[Chop result of group 7 into ranges]]></Summary>
+														<Location><![CDATA[7ec91fa5-1d31-44c5-8261-3e14647ea6b2:30040]]></Location>
+														<ExecutionTime>
+															<Timestamps>[{"Pop":[{"start":1720515968767761,"end":1720515968767764}]}]</Timestamps>
+														</ExecutionTime>
+														<UserCPUTime Unit="ms">0.003</UserCPUTime>
+														<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 14":"numUsedLocalContexts 1, CPUTime 0.003 ms, CPUWaitTime 0.000 ms, calls 1","operatorId":"48"}]]></Details>
+													</RootRelation>
+												</Plan>
+											</InnerPlans>
+										</RootRelation>
+									</Plan>
+									<Plan ID="126_group21" Type="Executed" PlanType="Column">
+										<RootRelation ID="126_group21_node" Status="Finished" Physical="True" TypeName="HEX">
+											<Name><![CDATA[FragmentScan]]></Name>
+											<Summary><![CDATA[]]></Summary>
+											<ExecutionTime>
+												<Timestamps>[{"Pop":[{"start":1720515968767696,"end":1720515968768044}]}]</Timestamps>
+											</ExecutionTime>
+											<UserCPUTime Unit="ms">0.015</UserCPUTime>
+											<Details><![CDATA[{"max numUsedLocalContexts":"1"}]]></Details>
+											<InnerPlans>
+												<Plan ID="127_op26" Type="Executed" PlanType="Column">
+													<RootRelation ID="127_op26_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+														<Name><![CDATA[FragmentScanInitOp]]></Name>
+														<Summary><![CDATA[Initialize scan on SPIDERMAN_1.ANIMESEASONS~main, ~delta1, ~delta2 of group 5]]></Summary>
+														<Location><![CDATA[7ec91fa5-1d31-44c5-8261-3e14647ea6b2:30040]]></Location>
+														<ExecutionTime>
+															<Timestamps>[{"Pop":[{"start":1720515968767696,"end":1720515968767704}]}]</Timestamps>
+														</ExecutionTime>
+														<UserCPUTime Unit="ms">0.002</UserCPUTime>
+														<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 11":"numUsedLocalContexts 1, CPUTime 0.002 ms, CPUWaitTime 0.000 ms, calls 1","operatorId":"42"}]]></Details>
+														<Child ID="123_op27_node">
+															<ExecutedOutputCardinality>0</ExecutedOutputCardinality>
+															<Details><![CDATA[{"ConnectionType":"Reversed"}]]></Details>
+														</Child>
+													</RootRelation>
+												</Plan>
+												<Plan ID="128_op28" Type="Executed" PlanType="Column">
+													<RootRelation ID="128_op28_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+														<Name><![CDATA[FragmentScanEstimationOp]]></Name>
+														<Summary><![CDATA[Estimate scan on SPIDERMAN_1.ANIMESEASONS~main, ~delta1, ~delta2 of group 5]]></Summary>
+														<Location><![CDATA[7ec91fa5-1d31-44c5-8261-3e14647ea6b2:30040]]></Location>
+														<ExecutionTime>
+															<Timestamps>[{"Pop":[{"start":1720515968767714,"end":1720515968767724}]}]</Timestamps>
+														</ExecutionTime>
+														<UserCPUTime Unit="ms">0.005</UserCPUTime>
+														<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 12":"numUsedLocalContexts 1, CPUTime 0.005 ms, CPUWaitTime 0.000 ms, calls 1","StateAfterRun (pfNr 1)":"{ResultSizeEstimation: {RowCountEstimation: {exactly 9 rows}, ChunkCapacityBound: 9, LargestIntermediateResult: 0}}","operatorId":"43"}]]></Details>
+														<Child ID="124_op29_node">
+															<ExecutedOutputCardinality>0</ExecutedOutputCardinality>
+															<Details><![CDATA[{"ConnectionType":"Reversed"}]]></Details>
+														</Child>
+													</RootRelation>
+												</Plan>
+												<Plan ID="129_op30" Type="Executed" PlanType="Column">
+													<RootRelation ID="129_op30_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+														<Name><![CDATA[FragmentScanIndexLookupOp]]></Name>
+														<Summary><![CDATA[Index Lookup on SPIDERMAN_1.ANIMESEASONS~main, ~delta1, ~delta2]]></Summary>
+														<Location><![CDATA[7ec91fa5-1d31-44c5-8261-3e14647ea6b2:30040]]></Location>
+														<ExecutionTime>
+															<Timestamps>[{"Pop":[{"start":1720515968767729,"end":1720515968767733}]}]</Timestamps>
+														</ExecutionTime>
+														<UserCPUTime Unit="ms">0.003</UserCPUTime>
+														<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 13":"numUsedLocalContexts 1, CPUTime 0.003 ms, CPUWaitTime 0.000 ms, calls 1","StateAfterRun (pfNr 1)":"{IndexLookupResult: n/a}","operatorId":"44"}]]></Details>
+													</RootRelation>
+												</Plan>
+												<Plan ID="79_op31" Type="Executed" PlanType="Column">
+													<RootRelation ID="79_op31_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+														<Name><![CDATA[FragmentScanOp_RpRp]]></Name>
+														<Summary><![CDATA[Scan on SPIDERMAN_1.ANIMESEASONS~main, ~delta1, ~delta2 of group 5]]></Summary>
+														<Location><![CDATA[7ec91fa5-1d31-44c5-8261-3e14647ea6b2:30040]]></Location>
+														<ExecutionTime>
+															<Timestamps>[{"Pop":[{"start":1720515968767758,"end":1720515968768044}]}]</Timestamps>
+														</ExecutionTime>
+														<UserCPUTime Unit="ms">0.005</UserCPUTime>
+														<EstimatedOutputCardinality>9</EstimatedOutputCardinality>
+														<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 14":"numUsedLocalContexts 1, CPUTime 0.005 ms, CPUWaitTime 0.000 ms, calls 1","Estimated Output Cardinality":"9","Fragment Cardinality (Name: ~delta1, PreparedFragmentNr: 1)":"9 rows","TaskStats from op: 77":"count = 0, parentOpId: 4294967295\u000aSampling: \u000acalculated cost: 0 for op: 41 taskSize: 18446744073709551615 will run in seq: 1 totalRowCount: 9\u000a","operatorId":"45"}]]></Details>
+														<Child ID="125_op38_node">
+															<ExecutedOutputCardinality>9</ExecutedOutputCardinality>
+															<Details><![CDATA[{"ConnectionType":"Reversed"}]]></Details>
+														</Child>
+													</RootRelation>
+												</Plan>
+											</InnerPlans>
+										</RootRelation>
+									</Plan>
+								</InnerPlans>
+							</RootRelation>
+						</Plan>
+						<Plan ID="130_op25" Type="Executed" PlanType="Column">
+							<RootRelation ID="130_op25_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+								<Name><![CDATA[OpenFragmentsOp<0u>]]></Name>
+								<Summary><![CDATA[Open Fragments SPIDERMAN_1.ANIMESEASONS~main, ~delta1, ~delta2]]></Summary>
+								<Location><![CDATA[7ec91fa5-1d31-44c5-8261-3e14647ea6b2:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1720515968767650,"end":1720515968767689}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.039</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 10":"numUsedLocalContexts 1, CPUTime 0.039 ms, CPUWaitTime 0.000 ms, calls 1","operatorId":"37"}]]></Details>
+								<Child ID="120_op24_node">
+									<ExecutedOutputCardinality>0</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="88_op33" Type="Executed" PlanType="Column">
+							<RootRelation ID="88_op33_node" Status="NotStarted" Mode="Expert" Physical="True" TypeName="HEX">
+								<Name><![CDATA[LlangOperatorWithRetry<LlangInOperator>]]></Name>
+								<Summary><![CDATA[Code-generated operator across relations <see next op>]]></Summary>
+								<Location><![CDATA[7ec91fa5-1d31-44c5-8261-3e14647ea6b2:30040]]></Location>
+								<UserCPUTime Unit="ms">0.000</UserCPUTime>
+								<EstimatedOutputCardinality>9</EstimatedOutputCardinality>
+								<Details><![CDATA[{"max numUsedLocalContexts":"0","calls":"0","Estimated Output Cardinality":"9","FieldToHeader":"1000003","HeaderToField":"1000003","hashtable lookup key":"ANIMESEASONS.ANIMECODE (NVARCHAR(10) NOT NULL)"}]]></Details>
+								<Child ID="78_op32_node">
+									<ExecutedOutputCardinality>9</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="131_op23" Type="Executed" PlanType="Column">
+							<RootRelation ID="131_op23_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX">
+								<Name><![CDATA[NoRunOperator]]></Name>
+								<Summary><![CDATA[]]></Summary>
+								<Location><![CDATA[7ec91fa5-1d31-44c5-8261-3e14647ea6b2:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1720515968767645,"end":1720515968767646},{"start":1720515968767730,"end":1720515968767731}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.002</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"2","pipeline 9":"numUsedLocalContexts 1, CPUTime 0.001 ms, CPUWaitTime 0.000 ms, calls 1","pipeline 13":"numUsedLocalContexts 1, CPUTime 0.001 ms, CPUWaitTime 0.000 ms, calls 1","operatorId":"35"}]]></Details>
+								<Child ID="129_op30_node">
+									<ExecutedOutputCardinality>0</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+					</InnerPlans>
+				</RootRelation>
+			</Plan>
+		</InnerPlans>
+	</Relation>
+</Plan>

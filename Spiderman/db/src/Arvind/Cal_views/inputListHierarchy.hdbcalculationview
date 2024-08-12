@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:DataFoundation="http://www.sap.com/ndb/BiModelDataFoundation.ecore" xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" id="inputListHierarchy" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" hierarchyGeneration="SQL" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="inputListHierarchy.hdbcalculationview"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="AnimeLevelHierarchy">
+    <resourceUri>AnimeLevelHierarchy</resourceUri>
+  </DataSource>
+</dataSources>
+<snapshotProcedures/>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <viewAttributes>
+      <viewAttribute id="ANIMECODE"/>
+      <viewAttribute id="ANIMENAME"/>
+      <viewAttribute id="ANIMESEASONNAME"/>
+      <viewAttribute id="ANIMESEASONCODE"/>
+      <viewAttribute id="SEASONNAME"/>
+      <viewAttribute id="NUMBEROFEPISODES"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="AnimeLevelHierarchy"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Projection_1">
+  <attributes>
+    <attribute id="ANIMECODE" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ANIMECODE"/>
+      <keyMapping columnObjectName="Projection_1" columnName="ANIMECODE"/>
+    </attribute>
+    <attribute id="ANIMENAME" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ANIMENAME"/>
+      <keyMapping columnObjectName="Projection_1" columnName="ANIMENAME"/>
+    </attribute>
+    <attribute id="ANIMESEASONNAME" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ANIMESEASONNAME"/>
+      <keyMapping columnObjectName="Projection_1" columnName="ANIMESEASONNAME"/>
+    </attribute>
+    <attribute id="ANIMESEASONCODE" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ANIMESEASONCODE"/>
+      <keyMapping columnObjectName="Projection_1" columnName="ANIMESEASONCODE"/>
+    </attribute>
+    <attribute id="SEASONNAME" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SEASONNAME"/>
+      <keyMapping columnObjectName="Projection_1" columnName="SEASONNAME"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="NUMBEROFEPISODES" order="6" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="NUMBEROFEPISODES"/>
+      <measureMapping columnObjectName="Projection_1" columnName="NUMBEROFEPISODES"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions>
+    <localDimension id="Anime_Level">
+      <attributeRef xsi:type="DataFoundation:Attribute">ANIMENAME</attributeRef>
+      <attributeRef xsi:type="DataFoundation:Attribute">ANIMESEASONNAME</attributeRef>
+      <attributeRef xsi:type="DataFoundation:Attribute">SEASONNAME</attributeRef>
+      <hierarchies>
+        <hierarchy xsi:type="Dimension:LeveledHierarchy" id="Anime_Level" aggregateAllNodes="true" orphanedNodesHandling="ROOT_NODES" rootNodeVisibility="ADD_ROOT_NODE" withRootNode="true" nodeStyle="LEVEL_NAME_ENFORCED" cacheEnabled="true" cycleHandling="BREAKUP" emptyValueIsNull="true">
+          <descriptions defaultDescription="Anime_details"/>
+          <unassignedMemberProperties mode="FALSE" name="FALSE"/>
+          <levels>
+            <level levelAttribute="ANIMENAME" levelType="MDLEVEL_TYPE_REGULAR" order="1" orderAttribute="ANIMENAME" sortDirection="ASC"/>
+            <level levelAttribute="ANIMESEASONNAME" levelType="MDLEVEL_TYPE_REGULAR" order="2" orderAttribute="ANIMESEASONNAME" sortDirection="ASC"/>
+            <level levelAttribute="SEASONNAME" levelType="MDLEVEL_TYPE_REGULAR" order="3" orderAttribute="SEASONNAME" sortDirection="ASC"/>
+          </levels>
+        </hierarchy>
+      </hierarchies>
+    </localDimension>
+  </localDimensions>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="100" y="226"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

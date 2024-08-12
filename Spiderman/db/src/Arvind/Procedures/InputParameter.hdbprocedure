@@ -1,0 +1,26 @@
+PROCEDURE "InputParameterProcedure"( startyear NVARCHAR(10),endyear NVARCHAR(10))
+LANGUAGE SQLSCRIPT
+SQL SECURITY INVOKER
+AS
+BEGIN
+    SELECT ANIMECODE from "ANIMERELEASEDDETAILS"
+    where "RELEASEDYEAR" BETWEEN startyear and endyear;
+
+    -- UPDATE "TABLE1" SET
+    -- COLUMN1='value'
+    -- WHERE COLUMN='value'
+
+    -- MERGE into "TABLE1" A
+    -- USING "TABLE1" ON A.COLUMN1 IN (values)
+    -- WHEN MATCHED THEN UPDATE
+    -- SET A.COLUMN='value';
+
+
+    -- TRUNCATE TABLE "TABLE1";
+
+    -- DELETE FROM "TABLE1" 
+    -- WHERE COLUMN="Value";
+
+
+
+END

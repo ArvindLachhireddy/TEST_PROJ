@@ -1,0 +1,5 @@
+[
+    "src/Tables/**/*.hdbtable",
+    "src/Replication Tasks/**/*.hdbreptask",
+    "src/Triggers/**/*.hdbtrigger"
+]

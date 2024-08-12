@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:DataFoundation="http://www.sap.com/ndb/BiModelDataFoundation.ecore" xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" id="ParentChlidInsideView" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" hierarchyGeneration="SQL" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="ParentChlidInsideView.hdbcalculationview"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="AnimeParentChild">
+    <resourceUri>AnimeParentChild</resourceUri>
+  </DataSource>
+</dataSources>
+<snapshotProcedures/>
+<calculationViews/>
+<logicalModel id="AnimeParentChild">
+  <attributes>
+    <attribute id="ANIME_PARENT_NAME" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ANIME_PARENT_NAME"/>
+      <keyMapping columnObjectName="AnimeParentChild" columnName="ANIME_PARENT_NAME"/>
+    </attribute>
+    <attribute id="ANIMECODE" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ANIMECODE"/>
+      <keyMapping columnObjectName="AnimeParentChild" columnName="ANIMECODE"/>
+    </attribute>
+    <attribute id="ANIME_CHILD_NAME" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ANIME_CHILD_NAME"/>
+      <keyMapping columnObjectName="AnimeParentChild" columnName="ANIME_CHILD_NAME"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="NUMBER_OF_EPISODES" order="4" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="NUMBER_OF_EPISODES"/>
+      <measureMapping columnObjectName="AnimeParentChild" columnName="NUMBER_OF_EPISODES"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions>
+    <localDimension id="AnimeDetails">
+      <attributeRef xsi:type="DataFoundation:Attribute">ANIME_CHILD_NAME</attributeRef>
+      <attributeRef xsi:type="DataFoundation:Attribute">ANIME_PARENT_NAME</attributeRef>
+      <hierarchies>
+        <hierarchy xsi:type="Dimension:ParentChildHierarchy" id="AnimeDetails" aggregateAllNodes="true" orphanedNodesHandling="ROOT_NODES" rootNodeVisibility="ADD_ROOT_NODE_IF_DEFINED" cacheEnabled="false" cycleHandling="BREAKUP" emptyValueIsNull="true">
+          <descriptions defaultDescription="AnimeDetails"/>
+          <unassignedMemberProperties mode="FALSE" name="FALSE"/>
+          <attributeParentPair attribute="ANIME_CHILD_NAME" parentAttribute="ANIME_PARENT_NAME">
+            <rootNode/>
+          </attributeParentPair>
+        </hierarchy>
+      </hierarchies>
+    </localDimension>
+  </localDimensions>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

@@ -1,0 +1,12 @@
+FUNCTION "Nested_table_Fn"( InputAnimecode NVARCHAR(10) )
+    RETURNS 
+    TABLE(
+    "ANIMECODE" NVARCHAR(10),
+	"RELEASEDYEAR" INTEGER)
+    LANGUAGE SQLSCRIPT
+    SQL SECURITY INVOKER AS
+BEGIN
+    RETURN
+    select "ANIMECODE","RELEASEDYEAR"
+    from "Animecode"(:InputAnimecode);
+END;

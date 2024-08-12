@@ -1,0 +1,4 @@
+COLUMN TABLE Anime_Parent (
+    Anime_Parent_Name VARCHAR(50),
+    AnimeCode VARCHAR(10)
+)

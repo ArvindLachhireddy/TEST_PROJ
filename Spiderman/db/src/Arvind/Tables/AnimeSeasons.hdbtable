@@ -1,0 +1,6 @@
+COLUMN TABLE AnimeSeasons (
+
+AnimeCode VARCHAR(10) NOT NULL,
+AnimeSeasonName VARCHAR(25),
+AnimeSeasonCode VARCHAR(10) NOT NULL
+)

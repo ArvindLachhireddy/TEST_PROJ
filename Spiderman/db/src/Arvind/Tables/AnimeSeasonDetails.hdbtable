@@ -1,0 +1,6 @@
+COLUMN TABLE AnimeSeasonDetails (
+    AnimeCode VARCHAR(10),
+    AnimeSeasonCode VARCHAR(10) NOT NULL,
+    SEASONNAME Varchar(30),
+    NUMBEROFEPISODES INTEGER
+)

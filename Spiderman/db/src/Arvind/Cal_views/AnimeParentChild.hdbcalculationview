@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:DataFoundation="http://www.sap.com/ndb/BiModelDataFoundation.ecore" xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" id="AnimeParentChild" applyPrivilegeType="SQL_ANALYTIC_PRIVILEGE" dataCategory="CUBE" schemaVersion="3.0" hierarchyGeneration="SQL" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="AnimeParentChild.hdbcalculationview"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="ANIME_PARENT">
+    <resourceUri>ANIME_PARENT</resourceUri>
+  </DataSource>
+  <DataSource id="ANIME_CHILD">
+    <resourceUri>ANIME_CHILD</resourceUri>
+  </DataSource>
+</dataSources>
+<snapshotProcedures/>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Parent">
+    <viewAttributes>
+      <viewAttribute id="ANIME_PARENT_NAME"/>
+      <viewAttribute id="ANIMECODE"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="ANIME_PARENT"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Child">
+    <viewAttributes>
+      <viewAttribute id="ANIME_CHILD_NAME"/>
+      <viewAttribute id="NUMBER_OF_EPISODES"/>
+    
+      <viewAttribute id="ANIMECODE"/></viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="ANIME_CHILD"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="C1_N" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="ANIME_PARENT_NAME"/>
+      <viewAttribute id="ANIMECODE"/>
+    
+      <viewAttribute id="ANIME_CHILD_NAME"/>
+      <viewAttribute id="NUMBER_OF_EPISODES" aggregationType="sum"/>
+    
+      <viewAttribute hidden="true" id="JOIN$ANIMECODE$ANIMECODE"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Parent">
+      <mapping xsi:type="Calculation:AttributeMapping" target="ANIME_PARENT_NAME" source="ANIME_PARENT_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ANIMECODE" source="ANIMECODE"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$ANIMECODE$ANIMECODE" source="ANIMECODE"/>
+    </input>
+    <input node="Child">
+      <mapping xsi:type="Calculation:AttributeMapping" target="ANIME_CHILD_NAME" source="ANIME_CHILD_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER_OF_EPISODES" source="NUMBER_OF_EPISODES"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$ANIMECODE$ANIMECODE" source="ANIMECODE"/>
+    </input>
+    <joinAttribute name="JOIN$ANIMECODE$ANIMECODE"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Join_1">
+  <attributes>
+    <attribute id="ANIME_PARENT_NAME" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ANIME_PARENT_NAME"/>
+      <keyMapping columnObjectName="Join_1" columnName="ANIME_PARENT_NAME"/>
+    </attribute>
+    <attribute id="ANIMECODE" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ANIMECODE"/>
+      <keyMapping columnObjectName="Join_1" columnName="ANIMECODE"/>
+    </attribute>
+    <attribute id="ANIME_CHILD_NAME" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ANIME_CHILD_NAME"/>
+      <keyMapping columnObjectName="Join_1" columnName="ANIME_CHILD_NAME"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="NUMBER_OF_EPISODES" order="4" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="NUMBER_OF_EPISODES"/>
+      <measureMapping columnObjectName="Join_1" columnName="NUMBER_OF_EPISODES"/>
+    
+      <exceptionAggregationMetadata/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions>
+    <localDimension id="AnimeDetails">
+      <attributeRef xsi:type="DataFoundation:Attribute">ANIME_CHILD_NAME</attributeRef>
+      <attributeRef xsi:type="DataFoundation:Attribute">ANIME_PARENT_NAME</attributeRef>
+      <hierarchies>
+        <hierarchy xsi:type="Dimension:ParentChildHierarchy" id="AnimeDetails" aggregateAllNodes="true" orphanedNodesHandling="ROOT_NODES" rootNodeVisibility="ADD_ROOT_NODE_IF_DEFINED" cacheEnabled="false" cycleHandling="BREAKUP" emptyValueIsNull="true">
+          <descriptions defaultDescription="AnimeDetails"/>
+          <unassignedMemberProperties mode="FALSE"/>
+          <attributeParentPair attribute="ANIME_CHILD_NAME" parentAttribute="ANIME_PARENT_NAME"/>
+        </hierarchy>
+      </hierarchies>
+    </localDimension>
+  </localDimensions>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="100" y="228"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="Parent" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Child" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Parent" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="-41" y="373"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Child" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="240" y="373"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

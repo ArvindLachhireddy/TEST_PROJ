@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="inputListHierarchy1" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" hierarchyGeneration="SQL" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="inputListHierarchy1.hdbcalculationview"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="AnimeLevelHierarchy">
+    <resourceUri>AnimeLevelHierarchy</resourceUri>
+  </DataSource>
+</dataSources>
+<snapshotProcedures/>
+<calculationViews>
+  <calculationView xsi:type="Calculation:HierarchyView" id="Hierarchy_1" function="HIERARCHY_LEVELED">
+    <viewAttributes>
+      <viewAttribute datatype="BIGINT" id="HIERARCHY_RANK"/>
+      <viewAttribute datatype="BIGINT" id="HIERARCHY_TREE_SIZE"/>
+      <viewAttribute datatype="BIGINT" id="HIERARCHY_PARENT_RANK"/>
+      <viewAttribute datatype="INTEGER" id="HIERARCHY_LEVEL"/>
+      <viewAttribute datatype="TINYINT" id="HIERARCHY_IS_CYCLE"/>
+      <viewAttribute datatype="TINYINT" id="HIERARCHY_IS_ORPHAN"/>
+      <viewAttribute datatype="NVARCHAR" length="256" id="HIERARCHY_LEVEL_NAME"/>
+      <viewAttribute datatype="NVARCHAR" length="5000" id="PARENT_ID"/>
+      <viewAttribute datatype="NVARCHAR" length="5000" id="NODE_ID"/>
+      <viewAttribute datatype="NVARCHAR" length="10" id="ANIMECODE"/>
+      <viewAttribute datatype="NVARCHAR" length="25" id="ANIMESEASONNAME"/>
+      <viewAttribute datatype="NVARCHAR" length="25" id="ANIMENAME"/>
+      <viewAttribute datatype="NVARCHAR" length="30" id="SEASONNAME"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="AnimeLevelHierarchy">
+      <mapping xsi:type="Calculation:AttributeMapping" target="ANIMECODE" source="ANIMECODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ANIMESEASONNAME" source="ANIMESEASONNAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ANIMENAME" source="ANIMENAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SEASONNAME" source="SEASONNAME"/>
+    </input>
+    <hierarchyLeveledParameterization>
+      <levels>
+        <level>ANIMENAME</level>
+        <level>ANIMESEASONNAME</level>
+        <level>SEASONNAME</level>
+      </levels>
+    </hierarchyLeveledParameterization>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Hierarchy_1">
+  <attributes>
+    <attribute id="HIERARCHY_LEVEL_NAME" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="HIERARCHY_LEVEL_NAME"/>
+      <keyMapping columnObjectName="Hierarchy_1" columnName="HIERARCHY_LEVEL_NAME"/>
+    </attribute>
+    <attribute id="PARENT_ID" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PARENT_ID"/>
+      <keyMapping columnObjectName="Hierarchy_1" columnName="PARENT_ID"/>
+    </attribute>
+    <attribute id="NODE_ID" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NODE_ID"/>
+      <keyMapping columnObjectName="Hierarchy_1" columnName="NODE_ID"/>
+    </attribute>
+    <attribute id="ANIMECODE" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ANIMECODE"/>
+      <keyMapping columnObjectName="Hierarchy_1" columnName="ANIMECODE"/>
+    </attribute>
+    <attribute id="ANIMESEASONNAME" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ANIMESEASONNAME"/>
+      <keyMapping columnObjectName="Hierarchy_1" columnName="ANIMESEASONNAME"/>
+    </attribute>
+    <attribute id="ANIMENAME" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ANIMENAME"/>
+      <keyMapping columnObjectName="Hierarchy_1" columnName="ANIMENAME"/>
+    </attribute>
+    <attribute id="SEASONNAME" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SEASONNAME"/>
+      <keyMapping columnObjectName="Hierarchy_1" columnName="SEASONNAME"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="HIERARCHY_RANK" order="1" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="HIERARCHY_RANK"/>
+      <measureMapping columnObjectName="Hierarchy_1" columnName="HIERARCHY_RANK"/>
+    </measure>
+    <measure id="HIERARCHY_TREE_SIZE" order="2" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="HIERARCHY_TREE_SIZE"/>
+      <measureMapping columnObjectName="Hierarchy_1" columnName="HIERARCHY_TREE_SIZE"/>
+    </measure>
+    <measure id="HIERARCHY_PARENT_RANK" order="3" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="HIERARCHY_PARENT_RANK"/>
+      <measureMapping columnObjectName="Hierarchy_1" columnName="HIERARCHY_PARENT_RANK"/>
+    </measure>
+    <measure id="HIERARCHY_LEVEL" order="4" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="HIERARCHY_LEVEL"/>
+      <measureMapping columnObjectName="Hierarchy_1" columnName="HIERARCHY_LEVEL"/>
+    </measure>
+    <measure id="HIERARCHY_IS_CYCLE" order="5" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="HIERARCHY_IS_CYCLE"/>
+      <measureMapping columnObjectName="Hierarchy_1" columnName="HIERARCHY_IS_CYCLE"/>
+    </measure>
+    <measure id="HIERARCHY_IS_ORPHAN" order="6" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="HIERARCHY_IS_ORPHAN"/>
+      <measureMapping columnObjectName="Hierarchy_1" columnName="HIERARCHY_IS_ORPHAN"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Hierarchy_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="100" y="217"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

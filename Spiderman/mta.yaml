@@ -1,0 +1,27 @@
+_schema-version: "2.1"
+ID: Spiderman
+version: 0.0.1
+modules:
+- name: db
+  type: hdb
+  path: db
+  requires:
+  - name: hdi_db
+    properties:
+      TARGET_CONTAINER: ~{hdi-container-name}
+  - name: S4UPS
+resources:
+- name: hdi_db
+  type: com.sap.xs.hdi-container
+  parameters:
+    config:
+      schema: Spiderman
+  properties:
+    hdi-container-name: ${service-name}
+- name: S4UPS
+  type: org.cloudfoundry.existing-service
+  parameters:
+    service-name: S4UPS
+    config:
+      makeUniqueName: false
+ 

@@ -1,0 +1,6 @@
+COLUMN TABLE AnimeParent_child (
+
+AnimeName VARCHAR(50),
+AnimeSubName VARCHAR(50),
+NumberOfEpisodes INTEGER
+)

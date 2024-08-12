@@ -1,0 +1,78 @@
+{
+    "S4UPS":{
+       "object_owner":{
+          "global_object_privileges":[
+             {
+                "name":"RS_S4H",
+                "type":"REMOTE SOURCE",
+                "privileges":[
+                   "CREATE VIRTUAL TABLE",
+                   "CREATE VIRTUAL FUNCTION",
+                   "CREATE REMOTE SUBSCRIPTION",  
+                   "PROCESS REMOTE SUBSCRIPTION EXCEPTION"
+                  //  "ALTER"
+                ]
+             },
+             {
+               "name":"RS_S4_GH",
+               "type":"REMOTE SOURCE",
+               "privileges":[
+                  "CREATE VIRTUAL TABLE",
+                  "CREATE VIRTUAL FUNCTION",
+                  "CREATE REMOTE SUBSCRIPTION",  
+                  "PROCESS REMOTE SUBSCRIPTION EXCEPTION"
+                 //  "ALTER"
+               ]
+            },
+            {
+              "name":"RS_BG",
+              "type":"REMOTE SOURCE",
+              "privileges":[
+                 "CREATE VIRTUAL TABLE",
+                 "CREATE VIRTUAL FUNCTION",
+                 "CREATE REMOTE SUBSCRIPTION",  
+                 "PROCESS REMOTE SUBSCRIPTION EXCEPTION",
+                 "ALTER"
+              ]
+           }
+          ]
+       },
+       "application_user":{
+          "global_object_privileges":[
+             {
+                "name":"RS_S4H",
+                "type":"REMOTE SOURCE",
+                "privileges":[
+                   "CREATE VIRTUAL TABLE",
+                   "CREATE VIRTUAL FUNCTION",
+                   "CREATE REMOTE SUBSCRIPTION",
+                   "PROCESS REMOTE SUBSCRIPTION EXCEPTION"
+                   // "ALTER"
+                ]
+             },
+             {
+               "name":"RS_S4_GH",
+               "type":"REMOTE SOURCE",
+               "privileges":[
+                  "CREATE VIRTUAL TABLE",
+                  "CREATE VIRTUAL FUNCTION",
+                  "CREATE REMOTE SUBSCRIPTION",
+                  "PROCESS REMOTE SUBSCRIPTION EXCEPTION"
+                  // "ALTER"
+               ]
+            },
+            {
+               "name":"RS_BG",
+               "type":"REMOTE SOURCE",
+               "privileges":[
+                  "CREATE VIRTUAL TABLE",
+                  "CREATE VIRTUAL FUNCTION",
+                  "CREATE REMOTE SUBSCRIPTION",
+                  "PROCESS REMOTE SUBSCRIPTION EXCEPTION",
+                  "ALTER"
+               ]
+            }
+          ]
+       }
+    }
+ }

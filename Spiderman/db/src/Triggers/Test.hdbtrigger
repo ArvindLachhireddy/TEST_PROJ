@@ -1,0 +1,29 @@
+TRIGGER "TEST_Harsh"
+AFTER INSERT OR UPDATE ON "TEST" 
+REFERENCING NEW ROW OLD
+FOR EACH ROW
+BEGIN
+    INSERT INTO "TEST_CDC"
+    (
+        with cte as(
+	        select MATNR,WERKS,count(*) from "TEST" group by MATNR,WERKS Having count(*) > 1
+        ),
+        cte2 as(
+            select 
+            A."MATNR",
+            A."WERKS",
+            A."PRICE",
+            A."CHANGE_TIME",
+            A.SEQUENCE,
+            row_number() over(partition by A.MATNR,A.WERKS order by A."CHANGE_TIME" desc) as Rnk from "TEST" A
+            join cte as B on A.MATNR = B.MATNR and A.werks = B.werks)
+
+            select 
+            "MATNR",
+            "WERKS",
+            "PRICE",
+            "CHANGE_TIME",
+            SEQUENCE
+            from cte2
+            where Rnk = 1); 
+END;

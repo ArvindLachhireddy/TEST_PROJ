@@ -1,0 +1,7 @@
+COLUMN TABLE AnimeReleasedDetails(
+    AnimeCode VARCHAR(10),
+    ReleasedDate DATE,
+    ReleasedMonth VARCHAR(10),
+    ReleasedYear INTEGER,
+    Rating INTEGER
+)

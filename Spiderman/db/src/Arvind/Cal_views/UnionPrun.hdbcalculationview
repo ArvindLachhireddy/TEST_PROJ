@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="UnionPrun" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" hierarchyGeneration="SQL" outputViewType="Aggregation" application="BAS" cacheInvalidationPeriod="NONE" enforceSqlExecution="true" pruningTable="Prun_Table">
+<descriptions defaultDescription="UnionPrun.hdbcalculationview"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="ANIMESEASONS">
+    <resourceUri>ANIMESEASONS</resourceUri>
+  </DataSource>
+  <DataSource id="ANIMESEASONDETAILS">
+    <resourceUri>ANIMESEASONDETAILS</resourceUri>
+  </DataSource>
+  <DataSource id="Join_2$$$$ANIMESEASONS$$">
+    <resourceUri>ANIMESEASONS</resourceUri>
+  </DataSource>
+  <DataSource id="Join_2$$$$ANIMESEASONDETAILS$$">
+    <resourceUri>ANIMESEASONDETAILS</resourceUri>
+  </DataSource>
+</dataSources>
+<snapshotProcedures/>
+<calculationViews>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="CN_N" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="ANIMECODE"/>
+      <viewAttribute id="ANIMESEASONNAME"/>
+      <viewAttribute id="ANIMESEASONCODE"/>
+      <viewAttribute id="SEASONNAME"/>
+      <viewAttribute id="NUMBEROFEPISODES" aggregationType="sum"/>
+      <viewAttribute hidden="true" id="JOIN$ANIMECODE$ANIMECODE"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="ANIMESEASONS">
+      <mapping xsi:type="Calculation:AttributeMapping" target="ANIMECODE" source="ANIMECODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ANIMESEASONNAME" source="ANIMESEASONNAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ANIMESEASONCODE" source="ANIMESEASONCODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$ANIMECODE$ANIMECODE" source="ANIMECODE"/>
+    </input>
+    <input node="ANIMESEASONDETAILS">
+      <mapping xsi:type="Calculation:AttributeMapping" target="SEASONNAME" source="SEASONNAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NUMBEROFEPISODES" source="NUMBEROFEPISODES"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$ANIMECODE$ANIMECODE" source="ANIMECODE"/>
+    </input>
+    <joinAttribute name="JOIN$ANIMECODE$ANIMECODE"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_2" cardinality="CN_N" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="ANIMECODE"/>
+      <viewAttribute id="ANIMESEASONNAME"/>
+      <viewAttribute id="ANIMESEASONCODE"/>
+      <viewAttribute id="SEASONNAME"/>
+      <viewAttribute id="NUMBEROFEPISODES" aggregationType="sum"/>
+      <viewAttribute hidden="true" id="JOIN$ANIMECODE$ANIMECODE"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Join_2$$$$ANIMESEASONS$$">
+      <mapping xsi:type="Calculation:AttributeMapping" target="ANIMECODE" source="ANIMECODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ANIMESEASONNAME" source="ANIMESEASONNAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ANIMESEASONCODE" source="ANIMESEASONCODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$ANIMECODE$ANIMECODE" source="ANIMECODE"/>
+    </input>
+    <input node="Join_2$$$$ANIMESEASONDETAILS$$">
+      <mapping xsi:type="Calculation:AttributeMapping" target="NUMBEROFEPISODES" source="NUMBEROFEPISODES"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SEASONNAME" source="SEASONNAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$ANIMECODE$ANIMECODE" source="ANIMECODE"/>
+    </input>
+    <joinAttribute name="JOIN$ANIMECODE$ANIMECODE"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:UnionView" id="Union_1">
+    <viewAttributes>
+      <viewAttribute id="ANIMECODE"/>
+      <viewAttribute id="ANIMESEASONNAME"/>
+      <viewAttribute id="ANIMESEASONCODE"/>
+      <viewAttribute id="SEASONNAME"/>
+      <viewAttribute id="NUMBEROFEPISODES" aggregationType="sum"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Join_1">
+      <mapping xsi:type="Calculation:AttributeMapping" target="ANIMECODE" source="ANIMECODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ANIMESEASONNAME" source="ANIMESEASONNAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ANIMESEASONCODE" source="ANIMESEASONCODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SEASONNAME" source="SEASONNAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NUMBEROFEPISODES" source="NUMBEROFEPISODES"/>
+    </input>
+    <input node="Join_2">
+      <mapping xsi:type="Calculation:AttributeMapping" target="ANIMECODE" source="ANIMECODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ANIMESEASONNAME" source="ANIMESEASONNAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ANIMESEASONCODE" source="ANIMESEASONCODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SEASONNAME" source="SEASONNAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NUMBEROFEPISODES" source="NUMBEROFEPISODES"/>
+    </input>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Union_1">
+  <attributes>
+    <attribute id="ANIMECODE" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ANIMECODE"/>
+      <keyMapping columnObjectName="Union_1" columnName="ANIMECODE"/>
+    </attribute>
+    <attribute id="ANIMESEASONNAME" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ANIMESEASONNAME"/>
+      <keyMapping columnObjectName="Union_1" columnName="ANIMESEASONNAME"/>
+    </attribute>
+    <attribute id="ANIMESEASONCODE" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ANIMESEASONCODE"/>
+      <keyMapping columnObjectName="Union_1" columnName="ANIMESEASONCODE"/>
+    </attribute>
+    <attribute id="SEASONNAME" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SEASONNAME"/>
+      <keyMapping columnObjectName="Union_1" columnName="SEASONNAME"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="NUMBEROFEPISODES" order="5" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="NUMBEROFEPISODES"/>
+      <measureMapping columnObjectName="Union_1" columnName="NUMBEROFEPISODES"/>
+      <exceptionAggregationMetadata/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Union_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="100" y="188"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="-11" y="271"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="ANIMESEASONS" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="161.34765625"/>
+    </shape>
+    <shape modelObjectName="ANIMESEASONDETAILS" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="203.787109375"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="239" y="271"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="ANIMESEASONS" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="198.46533203125"/>
+    </shape>
+    <shape modelObjectName="ANIMESEASONDETAILS" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="205.1845703125"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

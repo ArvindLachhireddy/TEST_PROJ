@@ -1,0 +1,7 @@
+COLUMN TABLE AnimeCode (
+
+    AnimeCode VARCHAR(10) NOT NULL,
+    AnimeName VARCHAR(25),
+    PRIMARY KEY (AnimeCode)
+
+)

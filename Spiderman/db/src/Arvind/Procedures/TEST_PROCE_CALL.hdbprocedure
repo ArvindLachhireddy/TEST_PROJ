@@ -1,0 +1,7 @@
+PROCEDURE "TEST_PROCE_CALL"( startyear NVARCHAR(10),endyear NVARCHAR(10))
+LANGUAGE SQLSCRIPT
+SQL SECURITY INVOKER
+AS
+BEGIN
+    CALL "InputParameterProcedure"(STARTYEAR => :startyear,ENDYEAR => :endyear );
+END

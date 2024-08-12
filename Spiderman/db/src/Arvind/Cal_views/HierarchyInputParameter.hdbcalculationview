@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:DataFoundation="http://www.sap.com/ndb/BiModelDataFoundation.ecore" xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" id="HierarchyInputParameter" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" hierarchyGeneration="SQL" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="HierarchyInputParameter.hdbcalculationview"/>
+<localVariables>
+  <variable id="IP_1" parameter="true">
+    <descriptions defaultDescription=""/>
+    <variableProperties datatype="NVARCHAR" mandatory="true" length="10" scale="null" defaultExpressionLanguage="SQL" defaultValue="1NS">
+      <valueDomain type="AttributeValue">
+        <externalLikeStructureName>AnimeLevelHierarchy</externalLikeStructureName>
+        <externalLikeStructureType>CALCULATION_VIEW</externalLikeStructureType>
+        <externalLikeElementName>ANIMECODE</externalLikeElementName>
+      </valueDomain>
+      <selection multiLine="true" type="SingleValue"/>
+    </variableProperties>
+  </variable>
+</localVariables>
+<variableMappings/>
+<dataSources>
+  <DataSource id="ANIMECODE">
+    <resourceUri>ANIMECODE</resourceUri>
+  </DataSource>
+  <DataSource id="ANIMESEASONS">
+    <resourceUri>ANIMESEASONS</resourceUri>
+  </DataSource>
+  <DataSource id="ANIMESEASONDETAILS">
+    <resourceUri>ANIMESEASONDETAILS</resourceUri>
+  </DataSource>
+  <DataSource id="ANIMERELEASEDDETAILS">
+    <resourceUri>ANIMERELEASEDDETAILS</resourceUri>
+  </DataSource>
+</dataSources>
+<snapshotProcedures/>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <viewAttributes>
+      <viewAttribute id="ANIMECODE"/>
+      <viewAttribute id="ANIMENAME"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="ANIMECODE"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+    <viewAttributes>
+      <viewAttribute id="ANIMECODE"/>
+      <viewAttribute id="ANIMESEASONNAME"/>
+      <viewAttribute id="ANIMESEASONCODE"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="ANIMESEASONS"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_3">
+    <viewAttributes>
+      <viewAttribute id="ANIMECODE"/>
+      <viewAttribute id="ANIMESEASONCODE"/>
+      <viewAttribute id="SUB_SEASONNAME"/>
+      <viewAttribute id="NUMBEROFEPISODES"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="ANIMESEASONDETAILS">
+      <mapping xsi:type="Calculation:AttributeMapping" target="SUB_SEASONNAME" source="SEASONNAME"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1_1" cardinality="C1_N" joinType="inner" multiJoinNode="Join_1" multiJoinCentralTable="Projection_1" multiJoinOrder="Outside In">
+    <viewAttributes>
+      <viewAttribute id="SUB_SEASONNAME"/>
+      <viewAttribute id="NUMBEROFEPISODES" aggregationType="sum"/>
+      <viewAttribute id="RELEASEDDATE"/>
+      <viewAttribute id="RELEASEDYEAR" aggregationType="sum"/>
+      <viewAttribute id="RATING" aggregationType="sum"/>
+      <viewAttribute id="RELEASEDMONTH"/>
+      <viewAttribute id="ANIMECODE"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Projection_3">
+      <mapping xsi:type="Calculation:AttributeMapping" target="SUB_SEASONNAME" source="SUB_SEASONNAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NUMBEROFEPISODES" source="NUMBEROFEPISODES"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ANIMECODE" source="ANIMECODE"/>
+    </input>
+    <input node="ANIMERELEASEDDETAILS">
+      <mapping xsi:type="Calculation:AttributeMapping" target="RELEASEDDATE" source="RELEASEDDATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RELEASEDYEAR" source="RELEASEDYEAR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RATING" source="RATING"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RELEASEDMONTH" source="RELEASEDMONTH"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ANIMECODE" source="ANIMECODE"/>
+    </input>
+    <joinAttribute name="ANIMECODE"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1_2" cardinality="C1_N" joinType="inner" multiJoinNode="Join_1" multiJoinCentralTable="Projection_1" multiJoinOrder="Outside In">
+    <viewAttributes>
+      <viewAttribute id="SUB_SEASONNAME"/>
+      <viewAttribute id="NUMBEROFEPISODES" aggregationType="sum"/>
+      <viewAttribute id="RELEASEDDATE"/>
+      <viewAttribute id="RELEASEDYEAR" aggregationType="sum"/>
+      <viewAttribute id="RATING" aggregationType="sum"/>
+      <viewAttribute id="RELEASEDMONTH"/>
+      <viewAttribute id="ANIMESEASONNAME"/>
+      <viewAttribute id="ANIMESEASONCODE"/>
+      <viewAttribute id="ANIMECODE"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Projection_2">
+      <mapping xsi:type="Calculation:AttributeMapping" target="ANIMESEASONNAME" source="ANIMESEASONNAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ANIMESEASONCODE" source="ANIMESEASONCODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ANIMECODE" source="ANIMECODE"/>
+    </input>
+    <input node="Join_1_1">
+      <mapping xsi:type="Calculation:AttributeMapping" target="SUB_SEASONNAME" source="SUB_SEASONNAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NUMBEROFEPISODES" source="NUMBEROFEPISODES"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RELEASEDDATE" source="RELEASEDDATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RELEASEDYEAR" source="RELEASEDYEAR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RATING" source="RATING"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RELEASEDMONTH" source="RELEASEDMONTH"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ANIMECODE" source="ANIMECODE"/>
+    </input>
+    <joinAttribute name="ANIMECODE"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1_3" cardinality="C1_N" joinType="inner" multiJoinNode="Join_1" multiJoinCentralTable="Projection_1" multiJoinOrder="Outside In">
+    <viewAttributes>
+      <viewAttribute id="SUB_SEASONNAME"/>
+      <viewAttribute id="NUMBEROFEPISODES" aggregationType="sum"/>
+      <viewAttribute id="RELEASEDDATE"/>
+      <viewAttribute id="RELEASEDYEAR" aggregationType="sum"/>
+      <viewAttribute id="RATING" aggregationType="sum"/>
+      <viewAttribute id="RELEASEDMONTH"/>
+      <viewAttribute id="ANIMECODE"/>
+      <viewAttribute id="ANIMESEASONNAME"/>
+      <viewAttribute id="ANIMESEASONCODE"/>
+      <viewAttribute id="ANIMENAME"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Projection_1">
+      <mapping xsi:type="Calculation:AttributeMapping" target="ANIMECODE" source="ANIMECODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ANIMENAME" source="ANIMENAME"/>
+    </input>
+    <input node="Join_1_2">
+      <mapping xsi:type="Calculation:AttributeMapping" target="SUB_SEASONNAME" source="SUB_SEASONNAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NUMBEROFEPISODES" source="NUMBEROFEPISODES"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RELEASEDDATE" source="RELEASEDDATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RELEASEDYEAR" source="RELEASEDYEAR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RATING" source="RATING"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RELEASEDMONTH" source="RELEASEDMONTH"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ANIMESEASONNAME" source="ANIMESEASONNAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ANIMESEASONCODE" source="ANIMESEASONCODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ANIMECODE" source="ANIMECODE"/>
+    </input>
+    <joinAttribute name="ANIMECODE"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Join_1_3" filterExpressionLanguage="SQL">
+  <attributes>
+    <attribute id="SUB_SEASONNAME" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SUB_SEASONNAME"/>
+      <keyMapping columnObjectName="Join_1_3" columnName="SUB_SEASONNAME"/>
+    </attribute>
+    <attribute id="RELEASEDDATE" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="RELEASEDDATE"/>
+      <keyMapping columnObjectName="Join_1_3" columnName="RELEASEDDATE"/>
+    </attribute>
+    <attribute id="RELEASEDYEAR" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="RELEASEDYEAR"/>
+      <keyMapping columnObjectName="Join_1_3" columnName="RELEASEDYEAR"/>
+    </attribute>
+    <attribute id="ANIMECODE" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ANIMECODE"/>
+      <keyMapping columnObjectName="Join_1_3" columnName="ANIMECODE"/>
+    </attribute>
+    <attribute id="ANIMESEASONNAME" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ANIMESEASONNAME"/>
+      <keyMapping columnObjectName="Join_1_3" columnName="ANIMESEASONNAME"/>
+    </attribute>
+    <attribute id="ANIMESEASONCODE" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ANIMESEASONCODE"/>
+      <keyMapping columnObjectName="Join_1_3" columnName="ANIMESEASONCODE"/>
+    </attribute>
+    <attribute id="ANIMENAME" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ANIMENAME"/>
+      <keyMapping columnObjectName="Join_1_3" columnName="ANIMENAME"/>
+    </attribute>
+    <attribute id="RELEASEDMONTH" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="RELEASEDMONTH"/>
+      <keyMapping columnObjectName="Join_1_3" columnName="RELEASEDMONTH"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="NUMBEROFEPISODES" order="2" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="NUMBEROFEPISODES"/>
+      <measureMapping columnObjectName="Join_1_3" columnName="NUMBEROFEPISODES"/>
+    </measure>
+    <measure id="RATING" order="5" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="RATING"/>
+      <measureMapping columnObjectName="Join_1_3" columnName="RATING"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions>
+    <localDimension id="Anime_LEVEL">
+      <attributeRef xsi:type="DataFoundation:Attribute">RELEASEDYEAR</attributeRef>
+      <attributeRef xsi:type="DataFoundation:Attribute">RELEASEDMONTH</attributeRef>
+      <attributeRef xsi:type="DataFoundation:Attribute">RELEASEDDATE</attributeRef>
+      <attributeRef xsi:type="DataFoundation:Attribute">ANIMENAME</attributeRef>
+      <hierarchies>
+        <hierarchy xsi:type="Dimension:LeveledHierarchy" id="Anime_LEVEL" aggregateAllNodes="true" orphanedNodesHandling="ROOT_NODES" rootNodeVisibility="ADD_ROOT_NODE" withRootNode="true" nodeStyle="LEVEL_NAME_ENFORCED" cacheEnabled="true" cycleHandling="BREAKUP" emptyValueIsNull="true">
+          <descriptions defaultDescription="Anime_LEVEL"/>
+          <unassignedMemberProperties mode="FALSE"/>
+          <levels>
+            <level levelAttribute="RELEASEDYEAR" levelType="MDLEVEL_TYPE_REGULAR" order="1" orderAttribute="RELEASEDYEAR" sortDirection="ASC"/>
+            <level levelAttribute="RELEASEDMONTH" levelType="MDLEVEL_TYPE_REGULAR" order="2" orderAttribute="RELEASEDMONTH" sortDirection="ASC"/>
+            <level levelAttribute="RELEASEDDATE" levelType="MDLEVEL_TYPE_REGULAR" order="3" orderAttribute="RELEASEDDATE" sortDirection="ASC"/>
+            <level levelAttribute="ANIMENAME" levelType="MDLEVEL_TYPE_REGULAR" order="4" orderAttribute="ANIMENAME" sortDirection="ASC"/>
+          </levels>
+        </hierarchy>
+      </hierarchies>
+    </localDimension>
+  </localDimensions>
+
+  <filter>&quot;ANIMECODE&quot;=$$IP_1$$</filter>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="-17" y="388"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="213" y="388"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Projection_3" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="494" y="388"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  
+  
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="100" y="221"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="152"/>
+    </shape>
+    <shape modelObjectName="Projection_2" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="198"/>
+    </shape>
+    <shape modelObjectName="Projection_3" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
+      <upperLeftCorner x="620" y="30"/>
+      <rectangleSize width="205"/>
+    </shape>
+    <shape modelObjectName="ANIMERELEASEDDETAILS" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
+      <upperLeftCorner x="920" y="30"/>
+      <rectangleSize width="218"/>
+    </shape></shapes>
+</layout>
+</Calculation:scenario>

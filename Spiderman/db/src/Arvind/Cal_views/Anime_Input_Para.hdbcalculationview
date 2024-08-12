@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="Anime_Input_Para" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" hierarchyGeneration="SQL" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="Anime_Input_Para.hdbcalculationview"/>
+<localVariables>
+  <variable id="Anime_Release_Date" parameter="true">
+    <descriptions defaultDescription=""/>
+    <variableProperties datatype="NVARCHAR" mandatory="true" length="10" scale="NaN" defaultValue="August">
+      <valueDomain type="AttributeValue">
+        <externalLikeStructureName>ANIMERELEASEDDETAILS</externalLikeStructureName>
+        <externalLikeElementName>RELEASEDMONTH</externalLikeElementName>
+      </valueDomain>
+      <selection multiLine="true" type="SingleValue"/>
+    </variableProperties>
+  </variable>
+</localVariables>
+<variableMappings/>
+<dataSources>
+  <DataSource id="ANIMERELEASEDDETAILS">
+    <resourceUri>ANIMERELEASEDDETAILS</resourceUri>
+  </DataSource>
+</dataSources>
+<snapshotProcedures/>
+<calculationViews/>
+<logicalModel id="ANIMERELEASEDDETAILS" filterExpressionLanguage="SQL">
+  <attributes>
+    <attribute id="ANIMECODE" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ANIMECODE"/>
+      <keyMapping columnObjectName="ANIMERELEASEDDETAILS" columnName="ANIMECODE"/>
+    </attribute>
+    <attribute id="RELEASEDDATE" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="RELEASEDDATE"/>
+      <keyMapping columnObjectName="ANIMERELEASEDDETAILS" columnName="RELEASEDDATE"/>
+    </attribute>
+    <attribute id="RELEASEDMONTH" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="RELEASEDMONTH"/>
+      <keyMapping columnObjectName="ANIMERELEASEDDETAILS" columnName="RELEASEDMONTH"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="RELEASEDYEAR" order="4" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="RELEASEDYEAR"/>
+      <measureMapping columnObjectName="ANIMERELEASEDDETAILS" columnName="RELEASEDYEAR"/>
+    </measure>
+    <measure id="RATING" order="5" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="RATING"/>
+      <measureMapping columnObjectName="ANIMERELEASEDDETAILS" columnName="RATING"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+  <filter>--IN (&quot;RELEASEDMONTH&quot;,$$Anime_Release_Date$$)
+&quot;RELEASEDMONTH&quot; in ($$Anime_Release_Date$$)</filter>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
