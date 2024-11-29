@@ -1,0 +1,108 @@
+1)cds add mta --- change path of db-deployer from gen/db to db in mta.yaml file
+2)cds add hana 
+3)in package.json
+
+	1)remove devDependencies
+	2) 
+
+"cds": {
+    "build": {
+      "tasks": [
+        {
+          "for": "hana",
+          "dest": "../db"
+        },
+        {
+          "for": "node-cf"
+        }
+      ]
+    },
+    "hana": {
+      "deploy-format": "hdbtable"
+    },
+    "requires": {
+      "db": {
+        "kind": "hana"
+      },
+      "auth": {
+        "kind": "dummy-auth"
+      }
+    }
+  }
+
+4)npm i
+5)npm install -g hana-cli
+6)hana-cli createModule
+
+
+--for no credentials provided error
+a)at db folder/level - "hana-cli copy2DefaultEnv" use the command.
+b)move the deafault-env file to root level/project level
+	i)cd.. to move to root/parent directory
+c)cds build
+
+7)After deploying CV  
+a)at db level - "hana-cli inspectView -v <view_name> -o cds"	<WORKER_CV>
+8)cds build before mbt build and then deploy 
+9)2 instances are created after deployment
+10)one more container is created in db explorer after deployment
+
+11)cross coantainer
+
+
+============POSTMAN===========
+1)GET = pass the service url 
+2)POST = pass the url and body in request using JSON 
+3)PUT and DELETE = pass the url with the ID and update the record
+(https://10d28748trial-dev-test-emp2-srv.cfapps.us10-001.hana.ondemand.com/odata/v4/my/WORKER1(ID=1))
+
+
+If any calculation view that contain Ip's then follow below :
+
+data-model.cds:
+
+@cds.persistence.calcview
+@cds.persistence.exists
+entity SalesOrgUnion(IP_WERKS:String(4),IP_BRAND_ID:String(4)){
+    key ARTICLENO     : String(18);
+        Stloc         : String(4);
+        ArticleDesc   : String(40);
+        StoreId       : String(4);
+        UOM           : String(3);
+        Brand_Id      : String(4);
+        Barcode       : String(18);
+        RetailPrice   : Decimal(11, 2);
+        Currency      : String(5);
+        ArticleType   : String(4);
+        AvailableQty  : Decimal(13, 3);
+        VRKME         : String(3);
+        KMEIN         : String(3);
+        CC_SOURCE     : String(4);
+        REF_SALES_ORG : String(18)
+}
+
+srv.cds
+
+ @readonly
+    
+    entity SalesOrg(IP_WERKS: String(4),IP_BRAND_ID : String(4)) as
+    select from SalesOrgUnion (IP_WERKS: :IP_WERKS,IP_BRAND_ID: :IP_BRAND_ID )
+        {
+            *
+        };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
